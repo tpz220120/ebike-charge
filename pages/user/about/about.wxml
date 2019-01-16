@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="header">
+    <view class="lx-img"><image src="/image/lxwo.png" style="width:100px;height:52px"/></view>
+    <view class="h-text">杭州原智电力科技有限公司</view>
+  </view>
+  <view class="a-list-items">
+      <view class="item-1">
+        售后专线
+      </view>
+      <view class="item-2" bindtap="makePhoneCall">
+        0571-81110722
+      </view>
+  </view>
+</view>

@@ -1,0 +1,73 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="confirm"/>
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+    </view>
+
+    <view class="main_lb">
+      <view wx:for="{{stList}}" wx:key="id">
+          <view class="main_list" ontap="goDevDetail" data-stid="{{item.id}}">
+            <view class= "main_list_stname">
+              {{item.name}}
+            </view>
+
+            <view wx:for="{{item.devList}}" wx:key="chargedeviceNo" wx:for-item="devItem">
+              <view class= "main_list_dev">
+                <view class="main-img">
+                  <image src="/image/main-lb-dev.png" style="width:15px;height:20px;" mode="scaleToFill"/>
+                </view>
+                <view class= "main_list_dev_no">
+                    {{devItem.chargedeviceNo}}
+                </view>
+                <view class="main-img">
+                <image src="/image/main-dev-kx.png" style="width:20px;height:20px;" mode="scaleToFill"/>
+                </view>
+                <view class= "main_list_dev_kxcz">
+                    {{devItem.kxnum}}个
+                </view>
+                <view class="main-img">
+                <image src="/image/main-dev-cd.png" style="width:20px;height:20px;" mode="scaleToFill"/>
+                </view>
+                <view class= "main_list_dev_cdcz">
+                    {{devItem.cdnum}}个
+                </view>
+              </view>
+            </view>
+            <view class= "main_list_addr">
+                <view class="main-img">
+                  <image src="/image/main-lb-addr.png" style="width:14px;height:15px;"mode="scaleToFill"/>
+                </view>
+                <view class="main_list_addr_sm">
+                  {{item.stationAddr}}
+                </view>
+            </view>
+          </view>
+        </view>
+    </view>
+    <!--
+    <view class="weui-panel weui-panel_access">
+        <view wx:for="{{stList}}" wx:key="id">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text" ontap="goDevDetail" data-stid="{{item.id}}">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">{{item.name}}</view>
+                    <view class="weui-media-box__desc">地址：{{item.stationAddr}}</view>
+                    <view class="weui-media-box__desc">：{{item.stationAddr}}</view>
+                </view>
+            </view>
+        </view>
+      </view>-->
+</view>

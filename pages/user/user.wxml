@@ -1,0 +1,125 @@
+<view class="page">
+  <view class="user">
+    <view class="user-w avatar">
+         <open-data type="userAvatarUrl"></open-data>
+    </view>
+   <view class="nickname lnick">
+      <open-data type="userNickName"></open-data>
+      <view class="userPhone">
+          {{bindPhone}}
+      </view>
+    </view>
+    <view  class="nickname">
+        <view wx:if="{{sfxsbd=='1'}}" class="ph" bindtap="bindPhone">
+            <block wx:if="{{sfbd=='0'}}">
+                绑定手机
+            </block>
+            <block wx:if="{{sfbd=='1'}}">
+                重新绑定
+            </block>    
+        </view>
+    </view>
+    
+  </view>
+
+  <scroll-view scroll-y>
+        <view>
+            <view class="a-list">
+                <view class="a-list-items">
+                    <view class="a-list-item am-list-item-middle"
+                        hover-class="a-list-item-hover"
+                        bindtap="handleListItemTap"
+                        data-index='0'>
+                        <view class="a-list-item-line">
+                            <image class="a-list-item-thumb" src="/image/center-cz.png" mode="scaleToFill" />
+                            <text class="a-list-item-content">我要充值(余额：{{account_num}}元)</text>
+                            <view class="a-list-arrow a-list-arrow-horizontal" />
+                            <view class="a-list-item-bottom" />
+                        </view>
+                    </view>
+                    <view class="a-list-item am-list-item-middle"
+                        hover-class="a-list-item-hover"
+                        bindtap="handleListItemTap"
+                        data-index='1'>
+                        <view class="a-list-item-line">
+                            <image class="a-list-item-thumb" src="/image/center-czjl.png" mode="scaleToFill" />
+                            <text class="a-list-item-content">余额明细</text>
+                            <view class="a-list-arrow a-list-arrow-horizontal" />
+                            <view class="a-list-item-bottom" />
+                        </view>
+                      </view>
+
+                      <view class="a-list-item am-list-item-middle"
+                        hover-class="a-list-item-hover"
+                        bindtap="handleListItemTap"
+                        data-index='7'>
+                        <view class="a-list-item-line">
+                            <image class="a-list-item-thumb" src="/image/center-hb.png" mode="scaleToFill" />
+                            <text class="a-list-item-content">我的红包(红包：{{hb_num}}元)</text>
+                            <view class="a-list-arrow a-list-arrow-horizontal" />
+                            <view class="a-list-item-bottom" />
+                        </view>
+                      </view>
+                      <view class="a-list-item am-list-item-middle"
+                        hover-class="a-list-item-hover"
+                        bindtap="handleListItemTap"
+                        data-index='2'>
+                        <view class="a-list-item-line">
+                            <image class="a-list-item-thumb" src="/image/center-cd.png" mode="scaleToFill" />
+                            <text class="a-list-item-content">当前充电({{dqcd_num}}条)</text>
+                            <view class="a-list-arrow a-list-arrow-horizontal" />
+                            <view class="a-list-item-bottom" />
+                        </view>
+                      </view>
+                      <view class="a-list-item am-list-item-middle"
+                        hover-class="a-list-item-hover"
+                        bindtap="handleListItemTap"
+                        data-index='3'>
+                        <view class="a-list-item-line">
+                            <image class="a-list-item-thumb" src="/image/center-cdjl.png" mode="scaleToFill" />
+                            <text class="a-list-item-content">充电记录</text>
+                            <view class="a-list-arrow a-list-arrow-horizontal" />
+                            <view class="a-list-item-bottom" />
+                        </view>
+                      </view>  
+                      
+                    <view class="a-list-item am-list-item-middle" hover-class="a-list-item-hover"
+                        bindtap="handleListItemTap"
+                        data-index='4'
+                    >
+                        <view class="a-list-item-line">
+                            <image class="a-list-item-thumb" src="/image/center-about.png" mode="scaleToFill" />
+                            <text class="a-list-item-content">联系我们</text>
+                            <view class="a-list-arrow a-list-arrow-horizontal" />
+                            <view class="a-list-item-bottom" />
+                        </view>
+                    </view>
+                    <view class="a-list-item am-list-item-middle"
+                        hover-class="a-list-item-hover"
+                        bindtap="handleListItemTap"
+                        data-index='5'>
+                        <view class="a-list-item-line">
+                            <image class="a-list-item-thumb" src="/image/center-tsjy.png" mode="scaleToFill" />
+                            <text class="a-list-item-content">投诉建议</text>
+                            <view class="a-list-arrow a-list-arrow-horizontal" />
+                            <view class="a-list-item-bottom" />
+                        </view>
+                      </view>
+
+                    <view class="a-list-item last"
+                        hover-class="a-list-item-hover"
+                        bindtap="handleListItemTap"
+                        data-index='6'>
+                        <view class="a-list-item-line">
+                            <image class="a-list-item-thumb" src="/image/center-czhb.png" mode="scaleToFill" />
+                            <text class="a-list-item-content">充值送红包</text>
+                            <view class="a-list-arrow a-list-arrow-horizontal" />
+                            <view class="a-list-item-bottom" />
+                        </view>
+                      </view>    
+                </view>
+            </view>
+        </view>
+  </scroll-view>
+   
+</view>

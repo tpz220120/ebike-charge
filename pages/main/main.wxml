@@ -1,0 +1,97 @@
+<view class="page">
+  <!--<view wx:if="{{tipshow==='1'}}" class="page-tip">
+    <view class="tip-img">
+        <image src="/image/tip-addr.png" style="width:16px;height:20px;"mode="scaleToFill"/>
+    </view>
+    <view class="tip-txt">
+        {{tipname}}
+    </view>
+    <view class="tip-img" bindtap="goDetail">
+        <image src="/image/tip-in.png" style="width:20px;height:15px;" mode="scaleToFill"/>
+    </view>
+  </view>
+  <view wx:if="{{tipshow==='0'}}" class="page-tip">
+    <view class="tip-img">
+        <image src="/image/tip-bike.png" style="width:30px;height:17px;"mode="scaleToFill"/>
+    </view>
+    <view class="tip-txt">
+        欢迎使用驿吧充电！
+    </view>
+  </view>-->
+
+  <view class="page-tip">
+    <view class="tip-img-user" bindtap="goUserCenter">
+         <open-data type="userAvatarUrl" class="userinfo"></open-data>
+    </view>
+
+    <view class="tip-img-list" bindtap="goList">
+        <image src="/image/main-list.png" style="width:20px;height:18px;" mode="scaleToFill"/>
+    </view>
+  </view>
+  <view class="map_container">
+    <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}"      show-location="true" markers="{{markers}}" bindmarkertap="markertap"
+        scale="{{scale}}"
+        controls="{{controls}}"
+        bindcontroltap="controltap"
+        bindregionchange="regionchange"
+        bindtap="tap"
+        style="width: 100%; height:{{mainHeight}}"
+    >
+    <cover-view class="controls"  wx:if="{{tipshow2==='1'}}" ontap="goDetail">
+        <cover-view  class="page-tip">
+          <cover-view class="tip-img">
+              <cover-image src="/image/tip-addr.png" style="width:16px;height:20px;"mode="scaleToFill"/>
+          </cover-view>
+          <cover-view class="tip-txt">
+              {{tipname}}
+          </cover-view>
+          <cover-view class="tip-img">
+              <cover-image src="/image/tip-in.png" style="width:20px;height:15px;" mode="scaleToFill"/>
+          </cover-view>
+        </cover-view>
+
+        <cover-view  class="page-tip2">
+           <cover-view class="tip-cz">
+              插座：
+          </cover-view>
+          <cover-view class="tip-czimg">
+              <cover-image src="/image/main-dev-kx.png" style="width:20px;height:20px;" mode="scaleToFill"/>
+          </cover-view>
+          <cover-view class="tip-czs">
+              {{kxnum}}个
+          </cover-view>
+          <cover-view class="tip-czimg">
+              <cover-image src="/image/main-dev-cd.png" style="width:20px;height:20px;" mode="scaleToFill"/>
+          </cover-view>
+          <cover-view class="tip-czs">
+              {{cdnum}}个
+          </cover-view>
+        </cover-view>
+      </cover-view>
+
+      <cover-view class="ad_controls"  wx:if="{{tipshow2==='0'}}" bindtap="goMall">
+              <cover-image src="/image/tg.png" mode="scaleToFill"/>
+      </cover-view>
+
+      <cover-view class="main_location" bindtap="goLocation">
+           <cover-image src="/image/main-location.png" style="width:50px;height:50px;"mode="scaleToFill"/>
+      </cover-view>
+
+      <cover-view class="main_msg" data-id="1" bindtap="goMainBtn">
+           <cover-image src="/image/main-tsjy.png" style="width:50px;height:50px;"mode="scaleToFill"/>
+      </cover-view>
+
+      <cover-view class="main_help" data-id="2" bindtap="goMainBtn">
+           <cover-image src="/image/main-sm.png" style="width:50px;height:50px;"mode="scaleToFill"/>
+      </cover-view>
+
+      <cover-view class="main_mall" bindtap="goMall">
+           <cover-image src="/image/main-mall.png" style="width:50px;height:50px;"mode="scaleToFill"/>
+      </cover-view>
+
+      <cover-view class="main_scan" data-id="3" bindtap="goMainBtn">
+           <cover-image src="/image/scan.png" style="height:50px;"mode="scaleToFill"/>
+      </cover-view>
+    </map>
+  </view>
+</view>

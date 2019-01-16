@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/paycharge/paycharge",
+    "pages/cdxx/cdxx",
+    "pages/tsjy/tsjy",
+    "pages/charge/charge",
+    "pages/tsjy/newtsjy/newtsjy",
+    "pages/tsjy/tsjymx/tsjymx",
+    "pages/user/user",
+    "pages/user/cz/cz",
+    "pages/user/xfjl/xfjl",
+    "pages/user/hiscd/hiscd",
+    "pages/user/hiscd/tkd/tkd",
+    "pages/user/user-cdjl/user-cdjl",
+    "pages/user/bindphone/bindphone",
+    "pages/user/about/about",
+    "pages/cdsm/cdsm",
+    "pages/tipview/cdview/cdview",
+    "pages/user/redpkt/redpkt",
+    "pages/user/cmpn/cmpnList",
+    "pages/user/cmpn/cmpndetail/cmpndetail",
+    "pages/main/mainlist/mainlist",
+    "pages/charge/onecharge/onecharge"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#108ee9",
+    "navigationBarTitleText": "驿吧充电"
+  },
+
+  "navigateToMiniProgramAppIdList":[
+    "wxc92a56ebbba6826c"
+  ],
+  "permission":{
+    "scope.userLocation":{
+        "desc":"您的位置信息将用于附近电站的查找"
+    }
+  } 
+}

@@ -1,0 +1,34 @@
+<view class="page">
+   <view class="month-header">
+        <view class="month">{{month}}</view>
+	      <view class="month-img"><image src="/image/cal.png" style="width:15px;height:15px"/></view>
+        
+	      <view class="month-text"><picker mode="date" value="{{month}}" fields="month" start="{{startDate}}" end="{{endDate}}"       bindchange="getM">选择其他月</picker></view>
+        
+  </view>
+  <view class="line"></view>
+  <view wx:if = "{{wdqjl=='2'}}">
+      <block wx:for="{{czList}}"  wx:key="journalId">
+        <view class="record-cells">
+          <view class="record-cell">
+            <view class="cellimg"><image src="/image/time.png" style="width:13px;height:13px"/></view>
+            <view class="celltext">{{item.payTimeLabel}}</view>
+          </view>
+        <view class="record-cell2">
+          <view class="celltext-lx">消费类型：{{item.journalTypeName}}</view>
+          <view class="celltext-account">
+            <block wx:if="{{item.journalDir=='0'}}">-</block>
+            <block wx:if="{{item.journalDir=='1'}}">+</block>
+            {{item.journalMoney}}
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view wx:if="{{wdqjl == '1'}}">
+      <view class="re-center">
+          <view class="nor-img"><image src="/image/no-czlist.png" style="width:180px;height:180px"/></view>
+          <view class="nor-text">暂无账户记录</view>
+      </view>
+  </view>
+</view>

@@ -1,0 +1,47 @@
+<!--pages/user/redpkt/redpkt.wxml-->
+<view class="page">
+  <view class="ye_bk">
+   		<view class="ye_text">红包余额</view>
+   		<view class="ye_account">
+   			<view class="ye_img">
+   				<image src="/image/rmb-2.png" style="width:15px;height:20px"/>
+	   		</view>
+   			<view class="ye_num">
+   			    <text class="num_zs" >{{num_zs}}</text>
+   			    <text class="num_xs">.{{num_xs}}</text>
+            <text class="ye_dw">(元)</text>
+	   		</view>
+   		</view>
+   </view>
+
+   <view class="month-header">
+        <view class="month">{{month}}</view>
+	      <view class="month-img"><image src="/image/cal.png" style="width:15px;height:15px"/></view>
+	      <view class="month-text"><picker mode="date" value="{{month}}" fields="month" start="{{startDate}}" end="{{endDate}}"       bindchange="getM">选择其他月</picker></view>
+  </view>
+  <view class="line"></view>
+  <view wx:if = "{{wdqjl=='1'}}">
+      <block wx:for="{{accountList}}" wx:key="journal_id">
+       <view class="record-cells"data-index="{{index}}">
+          <view class="record-cell">
+				  	  <view class="cellimg"><image src="/image/time.png" style="width:13px;height:13px"/></view>
+				  	  <view class="celltext">{{item.c_time_format}}</view>
+			   	</view>
+				  <view class="record-cell2">
+				  	 <view class="celltext-lx">{{item.hbType}}</view>
+				  	 <view class="celltext-account">
+              <block wx:if="{{item.journal_dir=='0'}}">-</block>
+              <block wx:if="{{item.journal_dir=='1'}}">+</block>
+              {{item.journal_money}}
+              </view>
+          </view>
+	      </view>
+	    </block>
+  </view>
+  <view wx:if="{{wdqjl == '0'}}">
+      <view class="re-center">
+          <view class="nor-img"><image src="/image/no-hblist.png" style="width:180px;height:180px"/></view>
+          <view class="nor-text">暂无红包记录</view>
+      </view>
+  </view>
+</view>

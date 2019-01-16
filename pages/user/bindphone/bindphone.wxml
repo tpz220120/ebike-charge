@@ -1,0 +1,20 @@
+<view>
+  <view class="bd-back">
+	   <image src="/image/bind-back.png" style="height:200px;width:100%"/>
+	   <image class="yzimg" src="/image/e-bike.png" style="height:70px;width:70px"/>
+	   <view class="yztext">杭州原智电力科技有限公司</view>
+    </view>
+    <view class="cell weui-flex">
+    	<view class="bd-1">绑定手机：</view>
+    	<view class="weui-flex__item">
+        <input type="number" bindinput="bindKeyInputPhone" class="weui-input" placeholder="请输入手机号"/>
+      </view>
+    </view>
+    
+    <view class="cell weui-flex">
+    	<view class="bd-1">验证码：</view>
+    	<view class="bd-2"><input class="weui-input" bindinput="bindKeyInputYzm" type="number" placeholder="请输入验证码"/></view>
+    	<view class="weui-flex__item yzm-btn" bindtap="getyzm">{{yzmtext}}</view>
+    </view>
+	   <view class="bd-btn" bindtap="bindPhone">绑定手机</view>
+</view>

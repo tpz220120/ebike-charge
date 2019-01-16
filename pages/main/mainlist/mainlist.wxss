@@ -1,0 +1,64 @@
+.weui-media-box__desc{
+  font-size:15px;
+}
+
+.main_lb{
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  font-size:12px;
+  color:rgba(100,100,100,1);
+}
+
+.main_list{
+  width:95%;
+  margin:10px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 5px 10px 0px rgba(10,31,51,0.2);
+  border-radius:5px;
+}
+
+.main_list_stname{
+ padding:10px 0 10px 10px;
+  font-size:17px;
+  font-weight:500;
+  color:rgba(50,50,50,1);
+}
+
+.main_list_dev{
+  margin-left: 20px;
+  margin-bottom:8px;
+  display:flex;
+}
+
+.main_list_dev_no{
+  margin-left:5px;
+  width:200px;
+}
+
+.main_list_dev_kxcz{
+  margin-left:5px;
+  width:100px;
+}
+
+.main_list_dev_cdcz{
+  margin-left:5px;
+  width:100px;
+}
+
+.main_list_addr{
+  padding:7px 0 15px 20px;
+  display: flex;
+}
+
+.main-img{
+  display: flex;
+  justify-content: center;
+  align-items: top;
+}
+
+.main_list_addr_sm{
+  margin-left:5px;
+  margin-right:10px;
+  line-height:15px;
+  word-wrap: break-word;
+}

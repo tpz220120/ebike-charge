@@ -1,0 +1,58 @@
+<view class= "page">
+    <view class="item-top item">
+        <view>
+            <text>电站名称：</text>
+        </view>
+        <view class="item-2">
+          {{stname}}
+        </view>
+      </view>
+      <view class="item">
+        <view>
+            <text>电站地址：</text>
+        </view>
+        <view class="item-3">
+          {{staddr}}
+        </view>
+    </view>
+    <view class="item item-bo">
+        <view>
+            <text>插座状况：</text>
+        </view>
+        <view>
+           <text style="color:#3399FF">{{czkxs}}</text><text>{{czzs}}</text>
+        </view>
+    </view>
+    <view wx:if="{{devDate}}">
+        <block wx:for="{{devDate}}" wx:key="chargedeviceNo">
+        <view class="item-dev-mar {{item.opStatus == '0' ? 'item-dev-detail-lx' : (item.devCzzt == '1'? 'item-dev-detail' :'item-dev-detail-kx')}}"  style="height:{{item.devHeight}}">
+            <view class="dev-flex">
+                <view class="dev-image">
+                    <image src="/image/dev.png" class ="charge-image" mode="scaleToFill"/>
+                </view>
+                <view class="dev-name">
+                    设备编号：{{item.chargedeviceNo}}
+                </view>
+            </view>
+            <view wx:if="{{item.czshow}}" class="item-kg" style="height:{{item.czHeight}}">
+                <block wx:for="{{item.plugList}}" wx:key="chargeplugNo" wx:for-index="idx" wx:for-item="czItem">
+                    <view class="win-cz-k" data-cdzt = "{{czItem.opStatus}}" data-cdczno = "{{czItem.chargeplugNo}}" bindtap="goCd">
+                        <view>
+                            <view wx:if="{{czItem.opStatus === '0'}}"><image src="/image/cz_on.png" class ="kg-image" mode="scaleToFill"/></view>
+                            <view wx:elif="{{czItem.opStatus === '1'}}"><image src="/image/cdz.gif" class ="kg-image" mode="scaleToFill"/></view>
+                            <view wx:else><image src="/image/cz_off.png" class ="kg-image" mode="scaleToFill"/></view>
+                        </view>
+                        <view class="win-cz-2">
+                            {{czItem.plugSn}}
+                        </view>
+                    </view>
+                </block>
+            </view>
+            
+            <view class="down" data-index="{{index}}" data-czcount="{{item.czCount}}" data-sfup="{{item.up}}" bindtap="upCz">
+                <image src="{{item.up ? '/image/show-up.png' : '/image/show-down.png'}}" class ="down-image" mode="scaleToFill" />
+            </view>       
+        </view>
+        </block>
+    </view>
+</view>

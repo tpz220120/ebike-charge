@@ -1,0 +1,28 @@
+<view class="stream">
+      <view wx:if = "{{wdqjl=='2'}}">
+        <block wx:for="{{dqcdList}}" wx:key="recordId">
+         <view class="post">
+            <view class="postUser">
+              <view class="postUser__name">{{item.chargeTime}}</view>
+            </view>
+            <view class="postBody" data-id = "{{item.recordId}}" bindtap="gocdxx">
+              <view class="postBody__content">
+                {{item.cdzname}}
+              </view>
+              <view class="postBody__content">
+                设备编号：{{item.chargedeviceNo}}
+              </view>
+              <view class="postBody__date">
+                插座序号：{{item.plugSn}}
+              </view>
+            </view>
+        </view>
+      </block>
+    </view>
+    <view wx:if="{{wdqjl == '1'}}">
+        <view class="re-center">
+            <view class="nor-img"><image src="/image/no-cdlist.png" style="width:180px;height:180px"/></view>
+            <view class="nor-text">暂无充电记录</view>
+        </view>
+    </view>
+    </view>

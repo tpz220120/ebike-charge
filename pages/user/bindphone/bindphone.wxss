@@ -1,0 +1,96 @@
+.bd-back {
+    position: relative;
+    width:100%;
+}
+
+#code_img {
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+    vertical-align: top;
+}
+
+.weui-flex {
+  display: flex;
+}
+.weui-flex__item {
+  flex: 1;
+}
+.weui-input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+  height: 1.41176471em;
+  line-height: 1.41176471;
+}
+
+.btn{
+padding:15px;
+}
+
+.yzimg{
+    position:absolute; top:20%; left:42%; 
+}
+
+.yztext{
+    position:absolute;
+    top:65%;
+    left:28%;
+    height:30px;
+    font-size:15px;
+    font-family:MicrosoftYaHei;
+    color:rgba(255,255,255,1);
+    line-height:0px;
+    text-align:center;
+}
+
+.cell{
+padding:10px 15px 10px 30px;
+align-items: center;
+border-bottom:1px solid rgba(230,230,230,1);
+}
+
+.weui-vcode-btn{
+margin-left:0px;
+padding:0px;
+text-align:center;
+background-color:#3399FF;
+color:red;
+}
+
+.bd-1{
+width:30%;
+}
+
+.bd-2{
+width:45%;
+}
+
+.yzm-btn{
+width:160px;
+height:35px;
+background: linear-gradient(#3399FF, #7FD7FF);
+border-radius:5px;
+color:rgba(255,255,255,1);
+font-size:12px;
+text-align:center;
+line-height:35px;
+}
+
+.bd-btn{
+position:absolute;
+top:460px;
+margin-left:10%;
+margin-right:10%;
+background: linear-gradient(#3399FF, #7FD7FF);
+width:80%;
+height:50px;
+color:rgba(255,255,255,1);
+border-radius:5px;
+text-align:center;
+line-height:50px;
+}

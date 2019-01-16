@@ -1,0 +1,45 @@
+<!--pages/user/cmpn/cmpndetail/cmpndetail.wxml-->
+<view class="page">
+<view class="re-center">
+    	<view class="hbcz-1">
+    		<image src="/image/hbcz-1.png" style="width:259px;height:120px"/>
+    	</view>
+    	<view class="hbcz-2">
+    		<image src="/image/hbcz-2.png" style="width:200px;height:38px"/>
+    	</view>
+    	<view class="hbcz-2-text">
+    		活动截止于{{info.end_time}}
+    	</view>
+    	
+    	<view class="hbcz-3">
+    		<image src="/image/hbcz-3.png" style="width:320px;height:290px"/>
+    	</view>
+    	
+    	<view class="cz_content">
+    		<view class="c_title">
+    			{{info.cmpn_name}}
+    		</view>
+    		<block wx:if ="{{info.cmpn_part_limit != '-1'}}">
+    			<view class="c_title2">
+	    			您已参与<text class="money_a">{{info.ycycs}}</text>次，还可参与<text class="money_a">{{info.kcycs}}</text>次
+	    		</view>
+    		</block>
+    		<view class="c_title_cz">
+	    		<view class="c_title3">
+	    			充值金额：<text class="money_c">{{info.recharge_money}}</text>（元）
+	    		</view>	
+    			<view class="c_title3">
+    				赠送红包：<text class="money_c">{{info.presend_redpkt_money}}</text>（元）
+    			</view>
+    		</view>
+    		
+    		<view class="content_btn" bindtap="goCzhb">
+	    		立即充值
+    		</view>
+    		<view class="item_tip">
+	   			<image class="item_tip_img" src="/image/hbcz-tip.png" style="width:9px;height:9px"/>
+	   			<view class="item_tip_text">充值金额及赠送红包仅能用于充电支付，不支持退款、提现。</view>
+   			</view>
+    	</view>
+    </view>
+</view>

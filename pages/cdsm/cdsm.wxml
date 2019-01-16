@@ -1,0 +1,3 @@
+<view>
+  <image src="/image/cdsm.png" mode="scaleToFill" class="cdsm"/>
+</view>

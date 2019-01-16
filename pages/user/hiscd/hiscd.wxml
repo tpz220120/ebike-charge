@@ -1,0 +1,67 @@
+<view class="page">
+   <view class="month-header">
+        <view class="month">{{month}}</view>
+	      <view class="month-img"><image src="/image/cal.png" style="width:15px;height:15px"/></view>
+	      <view class="month-text"><picker mode="date" value="{{month}}" fields="month" start="{{startDate}}" end="{{endDate}}"       bindchange="getM">选择其他月</picker></view>
+  </view>
+  <view class="line"></view>
+  <view wx:if = "{{wdqjl=='2'}}">
+      <block wx:for="{{cdList}}" wx:key="orderId">
+        <view class="record-cells" bindtap="showDetail" data-index="{{index}}">
+          <view class="record-cell">
+            <view class="cellimg"><image src="/image/time.png" style="width:13px;height:13px"/></view>
+            <view class="celltext">{{item.chargeTime}}</view>
+            <block wx:if="{{item.income != '0' && item.income != '0.00'}}">
+                <block wx:if="{{item.orderId == null || item.orderId == ''}}">
+                    <view class="celltext-st" catchtap="gotk" data-userid="{{item.chargeUserId}}" data-type="10" data-id="{{item.recordId}}">申请退款</view>
+                </block>
+                <block wx:if="{{item.orderId != null && item.orderId != ''}}">
+                  <block wx:if="{{item.orderStatus == 'W' && item.sftf == 'Y'}}">
+                      <view class="celltext-st" catchtap="gotk" data-type="20" data-id="{{item.orderId}}">处理中</view>
+                  </block>
+                  <block wx:if="{{item.orderStatus == 'S' && item.sftf == 'Y'}}">
+                      <view class="celltext-st" catchtap="gotk" data-type="30" data-id="{{item.orderId}}">退款成功</view>
+                  </block>
+                  
+                  <block wx:if="{{item.orderStatus == 'F' && item.sftf == 'Y'}}">
+                      <view class="celltext-st" catchtap="gotk" data-type="40" data-id="{{item.orderId}}">退款失败</view>
+                  </block>
+                </block>
+            </block>
+          </view>
+        <view class="record-cell">
+          <view class="celltext-addr">{{item.cdzname}}</view>
+          <view class="celltext-account">
+            消费：{{item.income}}元
+          </view>
+        </view> 
+	    </view>
+	  <view class="record-cells-dis" wx:if="{{item.expanded}}">
+		  <view class="record-cell">
+		  	  <view class="celldis-div">充电开始时间：</view>
+		  	  <view class="celldis-div2">{{item.chargeOpenTime}}</view>
+		  	  <view class="celldis-div3">充电类型：</view>
+		  	  <view class="celldis-div2">{{item.chargeTypeName}}</view>
+		  </view>
+		  <view class="record-cell">
+		  	  <view class="celldis-div">充电结束时间：</view>
+		  	  <view class="celldis-div2">{{item.chargeFinishTime}}</view>
+		  	  <view class="celldis-div3">插座序号：</view>
+		  	  <view class="celldis-div2">{{item.plugSn}}</view>
+		  </view>
+		  <view class="record-cell">
+		  	  <view class="celldis-div">用户充电金额：</view>
+		  	  <view class="celldis-div2">{{item.chargeMoney}}</view>
+		  	  <view class="celldis-div3">退费金额：</view>
+		  	  <view class="celldis-div2">{{item.returnMoney}}</view>
+		  </view>
+	    </view>
+    </block>
+  </view>
+  <view wx:if="{{wdqjl == '1'}}">
+      <view class="re-center">
+          <view class="nor-img"><image src="/image/no-cdlist.png" style="width:180px;height:180px"/></view>
+          <view class="nor-text">暂无充电记录</view>
+      </view>
+  </view>
+</view>

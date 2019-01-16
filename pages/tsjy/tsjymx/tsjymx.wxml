@@ -1,0 +1,101 @@
+<view>
+  <view class="item-text">
+    <view class="item-text-sqxx">
+    	<view class="item-text-title">
+    		投诉建议信息
+    	</view>
+    	<view class="item-text-detail">
+    		<view class="item-text-detail-l1">申请时间 </view>
+    		<view class="item-text-detail-l2">{{info.commitTimeFormat}}</view>
+    	</view>
+    	<view class="item-text-detail2">
+    		<view class="item-text-detail-l1">投诉建议说明 </view>
+    		<view class="item-text-detail-l2">{{info.csworkorderDesc}}</view>
+		</view>
+    	<block wx:if ="{{imgcount != 0}}">
+			<view class="image-show">
+				<view data-imsrc="{{info.csworkorderAttach}}" bindtap="previewImage" >
+					<image src="{{info.csworkorderAttach}}" class="image"></image>
+				</view>
+			</view>
+	    </block>
+    </view>
+    
+    <view class="item-text-sqxx">
+    	<view class="item-text-title">
+    		处理及反馈信息
+    	</view>
+    	<block wx:if="{{dcount == 0}}">
+    		<view class="item-text-img">
+	    		<image src="/image/no-record.png" style="height:92px;width:120px" mode="scaleToFill"/>
+	    	</view>
+    	</block>
+    	<block wx:if="{{dcount != 0}}">
+    		<block wx:for="{{dinfo}}" wx:key="csworkorderId">
+    		<view class="item-text-cl">
+	    		<view>
+		    		<view class="item-text-cl-l1">{{item.handleSn}}、</view>
+		    		<view class="item-text-cl-l2">{{item.handleTime}}</view>
+		    		<view class="item-text-cl-l3"></view>
+		    	</view>
+		    	<view>
+		    		<view class="item-text-cl-l4">{{item.handler}} </view>
+		    		<view class="item-text-cl-l3">处理</view>
+		    	</view>
+		    	<block wx:if="{{item.handleDesc != ''}}">
+		    		<view>
+			    		<view class="item-text-cl-l5">处理说明：{{item.handleDesc}} </view>
+			    	</view>
+		    	</block>
+		    	<view style="height:1px; margin-top:-1px;clear: both;overflow:hidden;"></view>
+		    </view>
+		    </block>
+    	</block>
+    </view>
+    <block wx:if="{{tsjg == 'over'}}">
+	    <view class="item-text-sqxx">
+	    	<view class="item-text-title">
+	    		归档信息
+	    	</view>
+    		<view class="item-text-gd">
+		    	<view>
+		    		<view class="item-text-gd-l1">{{info.archiveTimeFormat}}</view>
+		    		<view class="item-text-gd-l2">归档</view>
+		    	</view>
+		    	<view>
+		    		<view class="item-text-gd-l3">{{info.archiveDesc}}</view>
+		    	</view>
+	    	</view>
+	    </view>
+    </block>
+    </view>
+    
+    <block wx:if="{{tsjg != 'over' && info.csworkorderNode == '10'}}">
+		<view class="item-btn">
+			<view class="item-btn-qx" data-lx="no" bindtap="rePage">问题未解决</view>
+			<view class="item-btn-line"></view>
+			<view class="item-btn-qd" data-lx="yes" bindtap="rePage">问题已解决</view>
+		 </view>
+		  
+		 <view class="modal" wx:if="{{!hidden}}">
+			<view class="modal-container" animation="{{animContentData}}">
+				<view class="modal-close" bindtap="onModalCloseTap">×</view>
+				<view class="modal-content">
+					<view class="grid-child">
+						<view class="grid-child-title">
+							<text class="c-title">反馈说明</text>
+						</view>
+					</view>
+					<view class="page-section">
+						<view class="page-section-demo">
+							<textarea bindinput="bindTextAreaBlur" name="textarea" placeholder="请输入要反馈的问题或建议" fixed="true" style="height:100px"/>
+						</view>
+						<view class="page-section-btns">
+							<button type="primary" bindtap="qrfk">确认反馈</button>
+						</view>  
+					</view>
+				</view>
+			</view>
+        </view>
+	</block>
+</view>

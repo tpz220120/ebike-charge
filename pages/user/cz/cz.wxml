@@ -1,0 +1,53 @@
+<view class="page">
+    <view class="ye_bk">
+   		<view class="ye_text">账户余额</view>
+   		<view class="ye_account">
+   			<view class="ye_img">
+   				<image src="/image/rmb.png" style="width:15px;height:20px" mode="scaleToFill" />
+        </view>
+        <view class="ye_num">
+          <text class="num_zs">{{num_zs}}</text>
+          <text class="num_xs">{{num_xs}}</text>
+          <text class="ye_dw">(元)</text>
+        </view>
+   		</view>
+   	</view>
+  	
+   	<view class="cz_bk">
+   		<view class="cz_czje">
+          <view class="f_cz">
+            充值金额
+          </view>
+          <view wx:if = "{{cmpncount !=0}}"  class="show">
+            <block wx:for="{{cmpnList}}"  wx:key="cmpn_id">
+                <view class="f_czs">
+                    充{{item.recharge_money}}送{{item.presend_redpkt_money}}元
+                </view>
+            </block>
+          </view>
+        </view>
+   			<view class="grid-item-wrapper grid-margin">
+		      <view class="grid-text"><view class="{{check==10?'czcss-click':''}}" data-v="10" bindtap="innum">10元</view></view>
+		      <view class="grid-text"><view class="{{check==20?'czcss-click':''}}" data-v="20" bindtap="innum">20元</view></view>
+		      <view class="grid-text"><view class="{{check==50?'czcss-click':''}}" data-v="50" bindtap="innum">50元</view></view>
+		    </view>
+   			<view class="grid-item-wrapper">
+		      <view class="grid-text"><view class="{{check==100?'czcss-click':''}}" data-v="100" bindtap="innum">100元</view></view>
+		      <view class="grid-text"><view class="{{check==200?'czcss-click':''}}" data-v="200" bindtap="innum">200元</view></view>
+		      <view class="grid-text"><view class="{{check==300?'czcss-click':''}}" data-v="300" bindtap="innum">300元</view></view>
+        </view>
+      <view class="cz_czje_zdy">
+				<input type="number" bindinput="bindKeyInput" class="cz_czje_num"  id="num" placeholder="请输入支付金额" value="{{zfje}}"/>
+        <text class="cz_czje_dw">元</text>   
+      </view>
+      <view class="cz_czje_btn">
+      <button class="cz_czje_btntext" data-zfje="{{zfje}}" bindtap="ljcz">立即充值</button>
+      </view>
+   		<view class="cz_czje_tip">
+   			<view class="cz_czje_tips">
+   				<image src="/image/tips.png" style="width:12px;height:12px"mode="scaleToFill" />
+	   		</view>
+   			<view class="cz_czje_tiptext">充值余额暂不支持退款和提现，请合理安排充值金额。</view>
+   		</view>
+   	</view>
+</view>

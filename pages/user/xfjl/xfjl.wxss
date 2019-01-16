@@ -1,0 +1,140 @@
+.month-header{
+    display: flex;
+    background-color: #FFFFFF;
+    font-size: 17px;
+    overflow: hidden;
+    height:100rpx;
+    align-items:center;/*垂直居中*/
+}
+
+.month {
+  width:60%;
+  margin-left:40px;
+}
+
+.month-img {
+  margin-right:10px;
+}
+
+.month-text {
+  width:25%;
+  font-size:13px;
+  color:#2DABE5;
+}
+
+.line {
+  height:5px;
+  background:rgba(230,230,230,1);
+}
+
+.re-center {
+  margin-top:10px;
+  overflow: hidden;
+}
+
+.nor-img {
+   text-align:center; 
+   padding-top:30%;
+}
+
+.nor-text {
+   position:relative;
+   top:5%;
+   margin-top:20px;
+   text-align:center;
+   font-size:20px;
+   color:#CCCCCC 100%;
+}
+
+
+.record-cells {
+   background-color: #FFFFFF;
+   line-height: 10px;
+   font-size: 15px;
+   height:60px;
+   overflow: hidden;
+   position: relative;
+}
+
+.record-cells:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.record-cells:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  border-bottom: 1px solid #D9D9D9;
+  color: #D9D9D9;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+
+.record-cell {
+  padding-top:12px;
+  padding-left:15px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width:60%;
+  -webkit-box-align: left;
+  -webkit-align-items: left;
+          align-items: left;
+}
+
+.record-cell2 {
+  padding-top:12px;
+  padding-left:15px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width:100%;
+  -webkit-box-align: left;
+  -webkit-align-items: left;
+          align-items: left;
+}
+
+.cellimg {
+   float:left;
+   margin-right:20px;
+}
+
+.celltext {
+   float:left;
+   margin-top:1px;
+}
+
+.celltext-lx {
+   float:left;
+   margin-left:33px;
+   width:60%;
+   font-size:12px;
+   color:#909090;
+}
+
+.celltext-account {
+   float:left;
+   text-align:right;
+   width:25%;
+   font-size:18px;
+   color:#323232;
+   font-weight:bold;
+}
+
