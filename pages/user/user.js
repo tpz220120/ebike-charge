@@ -60,6 +60,8 @@ Page({
       wx.navigateTo({ url: 'cmpn/cmpnList' });
     }else if (i == 7) {
       wx.navigateTo({ url: 'redpkt/redpkt' });
+    } else if (i == 8) {//充电卡
+      wx.navigateTo({ url: 'card/card_main' });
     }else{
       wx.showModal({
         content: '此功能暂未开放！',

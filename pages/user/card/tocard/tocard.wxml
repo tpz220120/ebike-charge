@@ -1,0 +1,105 @@
+<view class="page">
+    <view class="title">
+      转卡后，您的第一张充电卡余额将转到第二张卡里。
+    </view>
+
+    <view class="ye_bk card_back">
+      <view class="ye_flex ye_top">
+        <view class="ye_bs">转出卡标识码</view>
+        <view class="ye_text">{{cardinfo.card_1}}</view>
+        <view class="ye_text">{{cardinfo.card_2}}</view>
+        <view class="ye_text">{{cardinfo.card_3}}</view>
+      </view>
+      
+   		<view class="ye_flex ye_account">
+   			<view class="ye_img">
+   				<image src="/image/card/rmb.png" style="width:15px;height:20px" mode="scaleToFill" />
+        </view>
+        <view class="ye_num">
+          <text class="num_zs">{{cardinfo.num_zs}}</text>
+          <text class="num_xs">.{{cardinfo.num_xs}}</text>
+          <text class="ye_dw">(元)</text>
+        </view>
+   		</view>
+   	</view>
+
+    <view class="item_tip">
+      <view class="item_tip_img">
+        <image src="/image/card/tips.png" style="width:12px;height:12px" mode="scaleToFill"/>
+      </view>
+      <view class="item_tip_text">请选择一张要转入的卡（已绑定），双击选中卡可再次选择</view>
+      </view>
+     <block wx:if="{{a==0}}">
+         <view class="card_nosel card_notsel_back">
+            <view class="sel_btn">
+                 <view class="btn_text" bindtap="selcard">选择卡</view>
+            </view>
+         </view>
+     </block>
+     <block wx:if="{{a==1}}">
+        <view class="ye_bk card_back" bindtap="selcard">
+          <view class="ye_flex ye_top">
+            <view class="ye_bs">转入卡标识码</view>
+             <view class="ye_text">{{othercardinfo.card_1}}</view>
+              <view class="ye_text">{{othercardinfo.card_2}}</view>
+              <view class="ye_text">{{othercardinfo.card_3}}</view>
+          </view>
+          
+          <view class="ye_flex ye_account">
+            <view class="ye_img">
+              <image src="/image/card/rmb.png" style="width:15px;height:20px" mode="scaleToFill" />
+            </view>
+            <view class="ye_num">
+              <text class="num_zs">{{othercardinfo.num_zs}}</text>
+              <text class="num_xs">.{{othercardinfo.num_xs}}</text>
+              <text class="ye_dw">(元)</text>
+            </view>
+          </view>
+        </view>
+     </block>
+     <view class="bd-btn" bindtap="sure">确定转卡</view>
+     <view class="modal" wx:if="{{!hidden}}">
+          <view class="modal-container" animation="{{animContentData}}">
+            <view class="modal-close" bindtap="onModalCloseTap">×</view>
+            <view class="modal-content">
+              <view class="grid-child">
+                <view class="grid-child-title">
+                  <text class="c-title">请选择一张卡</text>
+                </view>
+              </view>
+              <block wx:if="{{hasCard==1}}">
+              <block wx:for="{{cardList}}" wx:key="card_id">
+              <view class="ye_bk card_back" data-cardindex="{{index}}" bindtap="getOtherCard">
+                <view class="ye_flex ye_top">
+                  <view class="ye_bs">转出卡标识码</view>
+                  <view class="ye_text">{{item.card_1}}</view>
+                  <view class="ye_text">{{item.card_2}}</view>
+                  <view class="ye_text">{{item.card_3}}</view>
+                </view>
+                
+                <view class="ye_flex ye_account">
+                  <view class="ye_img">
+                    <image src="/image/card/rmb.png" style="width:15px;height:20px" mode="scaleToFill" />
+                  </view>
+                  <view class="ye_num">
+                    <text class="num_zs">{{item.num_zs}}</text>
+                    <text class="num_xs">.{{item.num_xs}}</text>
+                    <text class="ye_dw">(元)</text>
+                  </view>
+                </view>
+              </view>
+              </block>
+            </block>
+
+            <block wx:if="{{hasCard==0}}">
+                <view class="re-center">
+                  <view class="nor-img">
+                    <image src="/image/card/no-card.png" style="width:188px;height:165px" />
+                  </view>
+                  <view class="nor-text">无可转入的卡,请先去卡包里添加</view>
+                </view>
+            </block>
+            </view>
+          </view>
+     </view>
+</view>

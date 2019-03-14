@@ -58,11 +58,13 @@ Page({
 
     wx.downloadFile({
       url: e.currentTarget.dataset.imsrc,
-      success({ apFilePath }) {
-        console.log(apFilePath);
-        wx.previewImage({
-          urls: [apFilePath],
-        });
+      success(re) {
+        console.log(re.tempFilePath);
+        if (re.statusCode === 200) {
+          wx.previewImage({
+            urls: [re.tempFilePath]
+          })
+        }
       },
       fail(res) {
         wx.showModal({

@@ -1,10 +1,14 @@
 var app =getApp();
 Page({
+  data: {
+    tsjyList: [],
+    tcount: 0,
+    userid: '',
+  },
 onShow() {
     var that = this;
     wx.showLoading();
-    app.getSessionId().then(function(sessionid){
-      
+    app.getSessionId().then(function(sessionid){    
       wx.request({
         url: app.httpUrl + '/ebike-charge/workOrder/initTsjyWx.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
         data: {

@@ -1,0 +1,63 @@
+<view class="page">
+    <view class="ye_flex top">
+        <view class="add_img" bindtap="gobindcard">
+          <image src="/image/card/add-card.png" style="width:18px;height:18px" mode="scaleToFill" />
+        </view>
+        <view class="add_text">
+           添加充电卡
+        </view>
+        <view class="top_dc" bindtap="godc">
+           <view class="dc_text">代充</view>
+        </view>
+    </view>
+    <view class="line">
+    </view>
+    <view class="item_tip">
+   			<view class="item_tip_img">
+				  <image src="/image/card/tips.png" style="width:12px;height:12px" mode="scaleToFill"/>
+        </view>
+        <view class="item_tip_text">充电卡是自己绑定的充电卡并有充值服务；代充是为别人绑定
+的卡进行充值。</view>
+		</view>
+    <block wx:if="{{hasCard==1}}">
+      <view wx:for="{{cardList}}" wx:key="{{card_id}}" class="ye_bk card_back">
+        <view class="ye_flex ye_top">
+          <view class="ye_bs">卡标识码</view>
+          <view class="ye_text">{{item.card_1}}</view>
+          <view class="ye_text">{{item.card_2}}</view>
+          <view class="ye_text">{{item.card_3}}</view>
+        </view>
+        
+        <view class="ye_flex ye_account">
+          <view class="ye_img">
+            <image src="/image/card/rmb.png" style="width:15px;height:20px" mode="scaleToFill" />
+          </view>
+          <view class="ye_num">
+            <text class="num_zs">{{item.num_zs}}</text>
+            <text class="num_xs">.{{item.num_xs}}</text>
+            <text class="ye_dw">(元)</text>
+          </view>
+        </view>
+        <view class="ye_flex ye_btn">
+          <view class="bottom_btn" bindtap="gocz" data-cardid="{{item.card_id}}">
+            <view class="bottom_btn_text">充值</view>
+          </view>
+          <view class="bottom_btn" bindtap="gotocard" data-cardid="{{item.card_id}}">
+            <view class="bottom_btn_text">卡转卡</view>
+          </view>
+
+          <view class="bottom_btn" bindtap="gounbindcard" data-cardid="{{item.card_id}}">
+            <view class="bottom_btn_text">解绑</view>
+          </view>
+        </view>
+      </view>
+     </block>
+     <block wx:if="{{hasCard==0}}">
+        <view class="re-center">
+          <view class="nor-img">
+            <image src="/image/card/no-card.png" style="width:188px;height:165px" />
+          </view>
+          <view class="nor-text">未绑定卡,请添加</view>
+        </view>
+     </block>
+</view>、

@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="title">
+    验证手机号码解绑充电卡
+  </view>
+  <view class="weui-flex">
+    <view class="bd-1">标识码：</view>
+    <view class="phone">
+      {{cardid}}
+    </view>
+  </view>
+
+  <view class="weui-flex">
+    <view class="bd-1">手机号：</view>
+    <view class="phone">
+      {{phone}}
+    </view>
+  </view>
+  <view class="weui-flex">
+    <view class="bd-1">验证码：</view>
+    <view class="bd-2">
+      <input type="number" bindinput="bindKeyInputYzm" class="weui-input" placeholder="请输入验证码" />
+    </view>
+    <view class="weui-flex__item yzm-btn" bindtap="getyzm">{{yzmtext}}</view>
+  </view>
+  <view class="bd-btn" bindtap="unbindCard">解绑充电卡</view>
+  <view class="item_tip">
+      <view class="item_tip_img">
+        <image src="/image/card/tips.png" style="width:12px;height:12px" mode="scaleToFill"/>
+      </view>
+      <view class="item_tip_text">解除绑定后，您将查询不到余额以及不能进行充值。</view>
+  </view>
+</view>

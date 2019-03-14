@@ -1,0 +1,162 @@
+@import "/style/back.wxss";
+
+page
+{
+    background-color: rgba(255,255,255,1);
+    margin: 0;
+    font-size:15px;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    overflow-x:hidden;
+}
+
+.ye_bk {
+   height:30vh; 
+   margin:10rpx 4rpx;
+ }
+.ye_flex{
+  display: flex;
+}
+
+.top{
+  height:90rpx;
+  justify-content:center;
+  align-items:center;
+}
+
+.add_img{
+  display: flex;
+  margin-left:40rpx;
+  align-items: center;
+  margin-right:40rpx;
+}
+
+.add_text{
+  color:rgba(100,100,100,1);
+  width:60%;
+  line-height:90rpx;
+}
+
+.top_dc{
+  height:60rpx;
+  width:140rpx;
+  border:2px solid rgba(51,153,255,1);
+  border-radius:5px;
+}
+
+.dc_text{
+  text-align: center;
+  color:rgba(51,153,255,1);
+  line-height:30px;
+}
+
+.item_tip {
+  height:53rpx;
+	font-size:24rpx;
+	color:rgba(144,144,144,1);
+	padding-left: 30rpx;
+	padding-top:20rpx;
+	padding-bottom:20rpx;
+}
+
+.item_tip_img {
+	float:left;
+	margin-right:5px;
+}
+
+.item_tip_text {
+	float:left;
+	font-size:10px;
+	width:90%;
+	color:#646464;
+}
+
+.line{
+  background:rgba(230,230,230,1);
+  height:2px;
+}
+
+.ye_top {
+  position: relative;
+  top: 40rpx;
+}
+
+.ye_bs {
+	margin-left:87rpx;
+  line-height:35rpx;
+  margin-right:60rpx;
+}
+
+.ye_text {
+  font-size:36rpx;
+  line-height:36rpx;
+  margin-right:10rpx;
+}
+
+.ye_account {
+	position:relative;
+  top: 58rpx;
+}
+
+.ye_img {
+  display: flex;
+  align-items: center;
+  margin-left:145rpx;
+  margin-right:111rpx;
+}
+
+.ye_num {
+	float:left;
+}
+
+.num_zs {
+    font-size:80rpx;
+
+}
+.num_xs {
+    font-size:36rpx;
+}
+
+.ye_dw {
+    margin-top:21px;
+	  margin-left:20px;
+    font-size:18px;
+}
+
+.ye_btn {
+	position:relative;
+  top: 88rpx;
+  left:47rpx;
+}
+
+.bottom_btn{
+  height:60rpx;
+  width:140rpx;
+  border:2px solid rgba(255,255,255,1);
+  border-radius:5px;
+  margin-left:36rpx;
+  margin-right:36rpx;
+}
+
+.bottom_btn_text{
+  text-align: center;
+  line-height:30px;
+}
+
+.re-center {
+  margin-top:10px;
+  overflow: hidden;
+}
+
+.nor-img {
+   text-align:center; 
+   padding-top:30%;
+}
+
+.nor-text {
+   margin-top:20px;
+   text-align:center;
+   font-size:36rpx;
+   color:rgba(179,179,179,1);
+}

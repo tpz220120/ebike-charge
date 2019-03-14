@@ -1,0 +1,203 @@
+@import "/style/back.wxss";
+page
+{
+    background-color: rgba(255,255,255,1);
+    margin: 0;
+    font-size:24rpx;
+    font-family:MicrosoftYaHei;
+    font-weight:400;
+    color:rgba(144,144,144,1);
+    overflow-x:hidden;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+}
+
+.modal-container {
+  background-color: #fff;
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: 88vh;
+}
+
+.modal-close {
+  position: absolute;
+  top: 2rpx;
+  right: 60rpx;
+  color: #888;
+  font-size: 80rpx;
+  font-weight: 200;
+}
+
+.modal-content {
+  height: 40vh;
+}
+
+.grid-child {
+  padding-top: 20rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+}
+
+.grid-child-title {
+  height: 54rpx;
+  padding: 0 40rpx;
+}
+
+.c-title {
+  font-size: 48rpx;
+}
+
+.re-center {
+  margin-top:10px;
+  overflow: hidden;
+}
+
+.nor-img {
+   text-align:center; 
+   padding-top:30%;
+}
+
+.nor-text {
+   margin-top:20px;
+   text-align:center;
+   font-size:36rpx;
+   color:rgba(179,179,179,1);
+}
+
+.ye_flex{
+  display: flex;
+}
+
+.title{
+  margin:20rpx 0 30rpx 30rpx;
+}
+
+.item_tip {
+  display: flex;
+  height:53rpx;
+	color:rgba(144,144,144,1);
+	padding-left: 30rpx;
+	padding-top:20rpx;
+	padding-bottom:20rpx;
+}
+
+.item_tip_img {
+	display:flex;
+  align-items: center;
+	margin-right:5px;
+}
+
+.item_tip_text {
+	width:90%;
+	color:#646464;
+  line-height: 53rpx;
+}
+
+
+.ye_top {
+  position: relative;
+  top: 40rpx;
+}
+
+.ye_bs {
+	margin-left:87rpx;
+  line-height:35rpx;
+  margin-right:60rpx;
+}
+
+.ye_text {
+  font-size:36rpx;
+  line-height:36rpx;
+  margin-right:10rpx;
+}
+
+.ye_account {
+	position:relative;
+  top: 58rpx;
+}
+
+.ye_img {
+  display: flex;
+  align-items: center;
+  margin-left:145rpx;
+  margin-right:111rpx;
+}
+
+.ye_num {
+	float:left;
+}
+
+.num_zs {
+    font-size:80rpx;
+
+}
+.num_xs {
+    font-size:36rpx;
+}
+
+.ye_dw {
+    margin-top:21px;
+	  margin-left:20px;
+    font-size:18px;
+}
+
+.ye_btn {
+	position:relative;
+  top: 88rpx;
+  left:47rpx;
+}
+
+.sel_btn{
+  height:90rpx;
+  width:200rpx;
+  background:rgba(245,166,88,1);
+  box-shadow:0px 3px 3px 0px rgba(255,173,92,0.3);
+  border-radius:5px;
+  margin: auto;  
+  position: absolute;  
+  top: 0; left: 0; bottom: 0; right: 0; 
+
+}
+
+.btn_text{
+  text-align: center;
+  line-height:90rpx;
+}
+
+.bd-btn{
+  margin-top:80rpx;
+  margin-left:10%;
+  margin-right:10%;
+  background: linear-gradient(#3399FF, #7FD7FF);
+  width:80%;
+  height:50px;
+  color:rgba(255,255,255,1);
+  border-radius:5px;
+  text-align:center;
+  line-height:50px;
+  font-size:36rpx;
+}
+
+.card_nosel {
+	height:22vh; 
+  margin:10rpx 4rpx;
+  color:rgba(255,255,255,1);
+}
+
+.ye_bk {
+	height:22vh; 
+  margin:10rpx 4rpx;
+  color:rgba(255,255,255,1);
+}

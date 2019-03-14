@@ -1,0 +1,40 @@
+<view class="page">
+  <view class="title">
+    请输入充电卡上的标识码
+  </view>
+  <view class="weui-flex">
+    <view class="sel-img">
+      <image src="/image/card/star.png" style="width:12px;height:12px" mode="scaleToFill" />
+    </view>
+    <view class="bd-1">标识码：</view>
+    <view class="bd-2">
+      <input type="number" bindinput="bindKeyInput" class="weui-input" placeholder="请输入代充的卡标识" />
+    </view>
+    <view class="dc-btn" bindtap="checkNo">核查</view>
+  </view>
+
+  <block wx:if="{{a==1}}">
+    <view class="hc_info">
+      <view class="hc_text">请核对标识码和手机号码是否匹配</view>
+      <view class="hc_text2">标识码：{{info.card_id}}</view>
+      <view class="hc_text2">手机号：{{info.chargeUserMobile}}</view>
+    </view>
+
+    <view class="bd-btn" bindtap="goCz">去充值</view>
+  </block>
+  <view class="item_tip">
+      <view class="item_tip_img">
+        <image src="/image/card/tips.png" style="width:12px;height:12px" mode="scaleToFill"/>
+      </view>
+      <view class="item_tip_text">充电卡代充步骤：</view>
+  </view>
+  <view class="item_tip_text2">
+        1、输入标识码，点击“核查”；
+  </view>
+  <view class="item_tip_text2">
+        2、核对信息；
+  </view>
+  <view class="item_tip_text2">
+        3、充值。
+  </view>
+</view>

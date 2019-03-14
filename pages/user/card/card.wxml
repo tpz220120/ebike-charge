@@ -1,0 +1,37 @@
+<view class="page">
+  <view class="title">
+    请输入充电卡上的标识码
+  </view>
+  <view class="weui-flex">
+    <view class="sel-img">
+      <image src="/image/card/star.png" style="width:12px;height:12px" mode="scaleToFill" />
+    </view>
+    <view class="bd-1">标识码：</view>
+    <view class="weui-flex__item">
+      <input type="number" bindinput="bindKeyInputPhone" class="weui-input" placeholder="请输入充电卡上的数字" />
+    </view>
+  </view>
+
+  <view class="weui-flex">
+    <view class="bd-2">手机号：</view>
+    <view class="phone">
+      {{phone}}
+    </view>
+  </view>
+  <view class="bd-btn" bindtap="bindCard">绑定充电卡</view>
+  <view class="item_tip">
+      <view class="item_tip_img">
+        <image src="/image/card/tips.png" style="width:12px;height:12px" mode="scaleToFill"/>
+      </view>
+      <view class="item_tip_text">充电卡充值步骤：</view>
+  </view>
+  <view class="item_tip_text2">
+        1、输入标识码并核对手机号；
+  </view>
+  <view class="item_tip_text2">
+        2、点击“确定”；
+  </view>
+  <view class="item_tip_text2">
+        3、充值。
+  </view>
+</view>
