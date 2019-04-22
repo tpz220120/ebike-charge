@@ -78,7 +78,7 @@ Page({
              }else{
                wx.showModal({
                  title: '亲',
-                 content: '充电信息生成失败，请联系管理员！',
+                 content: '无法查找到当前充电信息，请到充电记录里查看！',
                  showCancel:false
                })
              } 

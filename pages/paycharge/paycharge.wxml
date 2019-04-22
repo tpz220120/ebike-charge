@@ -1,13 +1,13 @@
 <view class="page">
   <view class="item-wx">
-   		<view class="item-wx-text2">
+   	<view class="item-wx-text2">
 				<view class="text-n">{{stationinfo.name}}</view>
 				<view class="text-s">（设备编号：{{stationinfo.chargeDevNo}} 插座：{{pluginfo.plugSn}}）</view>
 		</view>
 		<view wx:if="{{sfmzf=='0'}}">	
+      <block wx:if="{{stationinfo.chargeType =='01' || stationinfo.chargeType =='02'}}">
    		<view class="item_margin">
 	   		<view class="cz_czje">充电金额</view>
-	   		
 	   		<view class="grid-item-wrapper">
 			      <view class="grid-text"><view class="{{check==1?'czcss-click':''}}" data-v="1" bindtap="innum">1元</view></view>
 			      <view class="grid-text"><view class="{{check==2?'czcss-click':''}}" data-v="2" bindtap="innum">2元</view></view>
@@ -31,7 +31,7 @@
 		   </view>
 		   <view class="item_sf">（最低消费：{{stationinfo.minCharge}}元）
 		   </view>
-		</view>
+		  </view>
    		<view class="item_margin">
 			<view wx:if="{{stationinfo.chargeType=='01'}}">
 				<view class="grid-item-wrapper">
@@ -61,6 +61,18 @@
 				</view>
 			</view>
 		</view>
+    </block>
+    <block wx:if="{{stationinfo.chargeType =='03'}}">
+        <view class="img-center">
+          <image src="/image/mfcd.png" style="width:270px;height:218px" mode="scaleToFill"/>
+        </view>
+        <view class="cz_czje_btn">
+          <button class="cz_czje_btntext" bindtap="aczf" data-v="{{stationinfo.unitPrice1}}">去支付</button>
+        </view>
+        <view class="item_title">
+          收费标准：按次收费，支付{{stationinfo.unitPrice1}}元即可享受充满为止的充电服务。
+        </view>
+    </block>
 		</view>
 		<view wx:if="{{sfmzf=='1'}}">
 			<view class="img-center">
@@ -81,14 +93,19 @@
 				<view class="item_tip_text">本充电站为您提供免费充电服务！</view>
 			</view>
 			<view wx:if="{{sfmzf=='0'}}">
-				<view wx:if="{{stationinfo.isReturn=='N'}}">
-					<view class="item_tip_text">单次充电充满后未消费的金额不退费，请酌情设定充电金额。</view>
-				</view>
-				<view wx:if="{{stationinfo.isReturn!='N'}}">
-					<view class="item_tip_text">单次充电充满后未消费的金额将原路退回。</view>
-					<view class="item_tip_text2">计费间隔：{{stationinfo.closingPeriod}}分钟</view>
-					<view class="item_tip_text2">（以30分钟计费间隔为例：不到30分钟按照30分钟计费，超过30分钟不到60分钟，按60分钟计费，以此类推。）</view>
-				</view>
+        <block wx:if="{{stationinfo.chargeType =='03'}}">
+            <view class="item_tip_text">本充电站为您提供公益性充电服务，不以盈利为目的，仅收取平台运营费，充电不退费。</view>
+        </block>
+        <block wx:if="{{stationinfo.chargeType =='01' || stationinfo.chargeType =='02'}}">
+            <view wx:if="{{stationinfo.isReturn=='N'}}">
+              <view class="item_tip_text">单次充电充满后未消费的金额不退费，请酌情设定充电金额。</view>
+            </view>
+            <view wx:if="{{stationinfo.isReturn!='N'}}">
+              <view class="item_tip_text">单次充电充满后未消费的金额将原路退回。</view>
+              <view class="item_tip_text2">计费间隔：{{stationinfo.closingPeriod}}分钟</view>
+              <view class="item_tip_text2">（以30分钟计费间隔为例：不到30分钟按照30分钟计费，超过30分钟不到60分钟，按60分钟计费，以此类推。）</view>
+            </view>
+        </block>			
 			</view>
    		</view>
 	</view>

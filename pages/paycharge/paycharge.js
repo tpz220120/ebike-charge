@@ -25,7 +25,6 @@ Page({
   onLoad(option) {
     console.log('option.id ==' + option.id);
     console.log('sessionid ==' + app.globalData.sessionid);
-
     console.log('app.codeid ==' + app.codeid);
     var id;
     // 如果是外面扫码那么判断是否有全局变量的扫码id在
@@ -63,7 +62,50 @@ Page({
     })
   },
 
+  //按次确认支付
+  aczf(e) {
+    var v = e.currentTarget.dataset.v;
+    this.setData({
+      zfje: v
+    })
+    // 如果账户有余额，那么余额支付，否则支付宝支付
+    if (parseFloat(this.data.hbaccount) >= parseFloat(this.data.zfje)) {
+      this.setData({
+        radiov: 2,
+        hbchecked: true,
+        yechecked: false,
+        alichecked: false,
+      })
+    } else if (parseFloat(this.data.account) >= parseFloat(this.data.zfje)) {
+      this.setData({
+        radiov: 0,
+        yechecked: true,
+        hbchecked: false,
+        alichecked: false,
+      })
+    } else {
+      this.setData({
+        radiov: 1,
+        yechecked: false,
+        hbchecked: false,
+        alichecked: true,
+      })
+    }
+    this.setData({
+      flag: 1
+    })
+  },
+
+  //按时按量确认支付
   ljzf(e){
+    if (this.data.zfje == ''){
+      wx.showModal({
+        content: '请输入支付金额！',
+        showCancel: false
+      });
+      return;
+    }
+
     // 最低消费
     if(parseFloat(this.data.zfje) < parseFloat(this.data.mincharge)){
       wx.showModal({
@@ -150,6 +192,7 @@ Page({
   },
 
   showPlugMsg:function(cdczno,sessionid){
+    console.log(cdczno);
     // 根据充电插座获取电站以及计费信息
     wx.request({
         url: app.httpUrl + '/ebike-charge/wxXcx/getCdzfDetail.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
@@ -212,6 +255,7 @@ Page({
     });
   },
 
+  // 选择充电支付方式确认支付
   qrzf(e){
     console.log(this.data.radiov);
     var cdczno = this.data.pluginfo.chargeplugNo;

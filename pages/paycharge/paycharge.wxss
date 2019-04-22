@@ -103,6 +103,13 @@
 	margin-bottom:15rpx;
 }
 
+item_tip_ac{
+	display: flex;
+	margin-left: 20rpx;
+	margin-top:100rpx;
+	margin-bottom:15rpx;
+}
+
 .item_sf {
 	font-size:24rpx;
 	color:#646464;
@@ -159,6 +166,7 @@
 }
 
 .item_tip_img {
+  margin-top:1px;
 	float:left;
 	margin-right:5px;
 }

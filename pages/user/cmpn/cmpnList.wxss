@@ -35,7 +35,7 @@
 
 .record-cell2 {
    position:relative;
-   top:60%;
+   top:55%;
    display:flex;
    flex:1;
 }

@@ -8,7 +8,6 @@ page
     font-family:MicrosoftYaHei;
     font-weight:400;
     color:rgba(255,255,255,1);
-    overflow-x:hidden;
 }
 
 .ye_bk {

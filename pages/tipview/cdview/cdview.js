@@ -29,12 +29,12 @@ Page({
               title:'温馨提醒',
               resultView:'该充电插座二维码无效！',
           })
-      }else if(st == '8'){
+      }else if(st == '9'){
           this.setData({
               title:'温馨提醒',
               resultView:'该充电插座不可用（设备离线），请更换一个插座充电。给您带来不便，敬请谅解，谢谢！',
           })
-      }else if(st == '9'){
+      }else if(st == '8'){
           this.setData({
               title:'温馨提醒',
               resultView:'该充电插座正在检修中，请更换一个插座充电。给您带来不便，敬请谅解，谢谢！',

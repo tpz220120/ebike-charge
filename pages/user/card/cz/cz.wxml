@@ -2,9 +2,9 @@
     <view class="ye_bk card_back">
    		<view class="ye_flex ye_top">
         <view class="ye_bs">卡标识码</view>
-        <view class="ye_text">1001</view>
-        <view class="ye_text">0001</view>
-        <view class="ye_text">1001</view>
+        <view class="ye_text">{{card_1}}</view>
+        <view class="ye_text">{{card_2}}</view>
+        <view class="ye_text">{{card_3}}</view>
       </view>
    	  <view class="ye_flex ye_account">
    			<view class="ye_img">

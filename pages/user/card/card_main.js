@@ -21,7 +21,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.globalData.sessionid != null) {
+    var that = this;
+    app.getSessionId().then(function (sessionid) {
       wx.request({
         url: app.httpUrl + '/ebike-charge/card/initCardMain.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
         data: {
@@ -31,18 +32,18 @@ Page({
           // 授权成功并且服务器端登录成功
           console.log(re);
 
-          this.setData({
+          that.setData({
             userid: re.data.userid,
             phone: re.data.phone
           });
 
           if (re.data.hasCard == '1') {
-            this.setData({
+            that.setData({
               hasCard: 1,
               cardList:re.data.cardList
             });
           } else {
-            this.setData({
+            that.setData({
               hasCard: 0
             });
           }
@@ -50,7 +51,7 @@ Page({
         fail: () => {
         },
       });
-    }
+    })
   },
 
   gocz(e){

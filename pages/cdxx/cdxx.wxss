@@ -31,7 +31,7 @@
 
 .item-back-jd2 {
     position:absolute;
-    top:80px;
+    top:70px;
     left:42%;
     font-family:Helvetica_cyr-Oblique;
     font-style:oblique;
@@ -40,7 +40,7 @@
 }
 
 .item-msg {
-	font-size:20rpx;
+	  font-size:20rpx;
     text-align:center;
     margin-top:60rpx;
 }
@@ -56,6 +56,15 @@
 
 .text-addr {
 	margin-top:10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-addr-img{
+  display: flex;
+  align-items: center;
+  margin-right:5px;
 }
 
 .item-colum-t{
@@ -165,6 +174,7 @@
 }
 
 .item_tip_img {
+  margin-top:1px;
 	margin-right:10rpx;
 }
 

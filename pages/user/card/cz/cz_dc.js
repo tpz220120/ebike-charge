@@ -65,7 +65,6 @@ Page({
   },
 
   goCz(){
-    
     if(this.data.a == ''){
       wx.showModal({
         content: '请先核查卡的信息！',

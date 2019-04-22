@@ -8,6 +8,9 @@ Page({
     phone: '',//代充值的时候用
     num_zs: '',
     num_xs: '',
+    card_1: '', 
+    card_2: '',
+    card_3: '',
     check: 0,//金额框选中标志
     zfje: ''//支付金额显示
   },
@@ -19,12 +22,25 @@ Page({
 
     if (options.type=='2'){
       this.setData({
+        cardid: options.cardid, // 代充值的卡号
         userid: options.userid,//代充值的时候用
         phone: options.phone,//代充值的时候用
       })
     }
 
-    this.getAccount(options.cardid);
+    var card_id = options.cardid;
+    this.setData({
+      card_1: card_id.substr(0, 4),
+      card_2: card_id.substr(4, 4),
+    });
+
+    if (card_id.length > 8) {
+      this.setData({
+        card_3: card_id.substr(8)
+      });
+    }
+
+    this.getAccount(card_id);
   },
 
   getAccount: function (card_id) {
@@ -42,6 +58,7 @@ Page({
           if (re.data.account_xs == '1') {
             xs = '.' + re.data.account_num_xs;
           }
+
           this.setData({
             num_zs: zs,
             num_xs: xs

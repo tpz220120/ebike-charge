@@ -15,7 +15,7 @@
 
 .hbcz-2-text{
    position:relative;
-   top:80px;
+   top:75px;
    text-align:center;
    font-size:12px;
 	font-family:MicrosoftYaHei-Bold;
@@ -58,7 +58,6 @@
 	font-family:MicrosoftYaHei-Bold;
 	font-weight:bold;
 	color:rgba(102,102,102,1);
-	height:100px;
   text-align:left;
 }
 

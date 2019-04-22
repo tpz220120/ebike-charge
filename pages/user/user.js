@@ -19,7 +19,8 @@ Page({
   },
 
   onShow() {
-    if(app.globalData.sessionid != null){
+    var that=this;
+    app.getSessionId().then(function (sessionid) {
         wx.request({
         url: app.httpUrl + '/ebike-charge/wxXcx/initUser.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
         data: {
@@ -28,7 +29,7 @@ Page({
         success: (re) => {
           // 授权成功并且服务器端登录成功
           console.log(re);
-          this.setData({
+          that.setData({
             account_num: re.data.account_num,
             dqcd_num:re.data.dqcd_num,
             bindPhone:re.data.bindPhone,
@@ -39,7 +40,7 @@ Page({
         fail: () => {
         },
       });
-    }
+    })
   },
   handleListItemTap(e) {
     var i = e.currentTarget.dataset.index;
