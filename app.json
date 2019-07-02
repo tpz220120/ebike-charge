@@ -27,7 +27,10 @@
     "pages/user/cmpn/cmpndetail/cmpndetail",
     "pages/main/mainlist/mainlist",
     "pages/charge/onecharge/onecharge",
-    "pages/user/card/cz/cz"
+    "pages/user/card/cz/cz",
+    "pages/navi/navigation_ride/navigation",
+    "pages/navi/navigation_ride_detail/navigation",
+    "pages/message/message"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -41,5 +44,6 @@
     "scope.userLocation": {
       "desc": "您的位置信息将用于附近电站的查找"
     }
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

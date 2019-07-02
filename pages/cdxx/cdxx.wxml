@@ -15,7 +15,7 @@
           </view>
         </view>
       </view>
-      <block wx:if="{{stationinfo.chargeType =='01' || stationinfo.chargeType =='02'}}">
+      <block wx:if="{{info.chargeType =='01' || info.chargeType =='02'}}">
         <view class="item-colum-t">
             <view class="item-colum">
                   <view class="item-colum-1">{{ycdname}}</view>

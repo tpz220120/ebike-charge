@@ -37,7 +37,7 @@
         bindtap="tap"
         style="width: 100%; height:{{mainHeight}}"
     >
-    <cover-view class="controls"  wx:if="{{tipshow2==='1'}}" ontap="goDetail">
+    <cover-view class="controls"  wx:if="{{tipshow2==='1'}}" bindtap="goDetail">
         <cover-view  class="page-tip">
           <cover-view class="tip-img">
               <cover-image src="/image/tip-addr.png" style="width:16px;height:20px;"mode="scaleToFill"/>
@@ -66,12 +66,24 @@
           <cover-view class="tip-czs">
               {{cdnum}}个
           </cover-view>
+
+          <cover-view class="tip-img" catchtap="goNavi">
+              <cover-image src="/image/navi.png" style="width:40px;height:20px;" mode="scaleToFill"/>
+          </cover-view>
         </cover-view>
       </cover-view>
 <!--
       <cover-view class="ad_controls"  wx:if="{{tipshow2==='0'}}" bindtap="goMall">
               <cover-image src="/image/tg.png" mode="scaleToFill"/>
       </cover-view>-->
+
+      <cover-view wx:if="{{read == '0'}}" class="main_sendmsg" bindtap="goMainBtn" data-id="4">
+           <cover-image src="/image/main-msg-read.png" style="width:50px;height:50px;"mode="scaleToFill"/>
+      </cover-view>
+
+      <cover-view wx:if="{{read == '1'}}" class="main_sendmsg" bindtap="goMainBtn" data-id="4">
+           <cover-image src="/image/main-msg-noread.png" style="width:50px;height:50px;"mode="scaleToFill"/>
+      </cover-view>
 
       <cover-view class="main_location" bindtap="goLocation">
            <cover-image src="/image/main-location.png" style="width:50px;height:50px;"mode="scaleToFill"/>

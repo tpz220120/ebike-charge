@@ -20,7 +20,7 @@
 的卡进行充值。</view>
 		</view>
     <block wx:if="{{hasCard==1}}">
-      <view wx:for="{{cardList}}" wx:key="{{card_id}}" class="ye_bk card_back">
+      <view wx:for="{{cardList}}" wx:key="{{card_id}}" class="ye_bk {{item.status == '3'?'card_back_miss': 'card_back' }}">
         <view class="ye_flex ye_top">
           <view class="ye_bs">卡标识码</view>
           <view class="ye_text">{{item.card_1}}</view>
@@ -38,7 +38,7 @@
             <text class="ye_dw">(元)</text>
           </view>
         </view>
-        <view class="ye_flex ye_btn">
+        <view wx:if="{{item.status != '3'}}"class="ye_flex ye_btn">
           <view class="bottom_btn" bindtap="gocz" data-cardid="{{item.card_id}}">
             <view class="bottom_btn_text">充值</view>
           </view>
@@ -48,6 +48,15 @@
 
           <view class="bottom_btn" bindtap="gounbindcard" data-cardid="{{item.card_id}}">
             <view class="bottom_btn_text">解绑</view>
+          </view>
+          <view class="bottom_btn" bindtap="gomisscard" data-cardid="{{item.card_id}}" data-status="3">
+            <view class="bottom_btn_text">挂失</view>
+          </view>
+        </view>
+
+        <view wx:if="{{item.status == '3'}}" class="ye_flex_center">
+          <view class="bottom_btn_jc" bindtap="gomisscard" data-cardid="{{item.card_id}}" data-status="1">
+            <view class="bottom_btn_text">解除挂失</view>
           </view>
         </view>
       </view>

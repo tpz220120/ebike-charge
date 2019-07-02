@@ -10,7 +10,7 @@
     <block wx:if="{{tempFilePath != ''}}">
 			<view class="image-show">
 				<view data-imsrc="{{tempFilePath}}" bindtap="previewImage" >
-						<image src="{{tempFilePath}}" class="image"></image>
+						<image src="{{tempFilePath}}" class="image" mode="aspectFit"></image>
 				</view>
 				<image src="/image/image-close.png" class="image-close" bindtap="clear" style="width:30px;height:30px" mode="scaleToFill"></image>
 			</view>

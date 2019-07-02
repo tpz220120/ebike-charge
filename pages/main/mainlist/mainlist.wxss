@@ -9,6 +9,12 @@
   color:rgba(100,100,100,1);
 }
 
+.main_list_flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .main_list{
   width:95%;
   margin:10px;
@@ -18,10 +24,17 @@
 }
 
 .main_list_stname{
- padding:10px 0 10px 10px;
+  padding:10px 0 10px 10px;
   font-size:17px;
   font-weight:500;
   color:rgba(50,50,50,1);
+  width:82%;
+}
+
+.main_list_navi{
+  padding:10px 0 10px;
+  display: flex;
+  align-items: center;
 }
 
 .main_list_dev{

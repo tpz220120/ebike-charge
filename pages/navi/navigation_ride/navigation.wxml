@@ -1,0 +1,11 @@
+<view class="map_box">
+  <map id="navi_map" longitude="{{jd}}" latitude="{{wd}}" scale="16" markers="{{markers}}" polyline="{{polyline}}"></map>
+</view>
+
+<view class="text_box">
+  <view class="flex-style">
+    <view class="text">距离：{{distance}}</view>
+    <view class="text">耗时：{{cost}}</view>
+    <view class="btn" bindtouchstart="goDetail">详情</view>
+  </view>
+</view>

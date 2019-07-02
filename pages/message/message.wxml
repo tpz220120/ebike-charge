@@ -1,0 +1,43 @@
+<view>
+  <view wx:if = "{{count > 0}}">
+   <block wx:for="{{info}}"  wx:key="id">
+    <view class="yz_cell">
+      <view class="msg_title">
+      充电结束异常原因分析
+      </view>
+      <view class="msg_tip">
+      尊敬的用户，您的充电已经结束
+      </view>
+      <view>
+      结束充电时间：{{item.chargeFinishTime}}
+      </view>
+      <view>
+      充电地点：{{item.chargeAddr}}
+      </view>
+      <view>
+      结束原因分析：{{item.finishReasonDesc}}
+      </view>
+      <view class="msg_tip">
+      如有问题，请联系驿吧客服，感谢您的使用！
+      </view>
+      <view class="msg_line">
+      </view>
+      <view class="msg_link" bindtap="goHis">
+            <view class="msg_link_name">
+              详情
+            </view>
+            <view>
+              <image src="/image/msg-detail.png" style="width:7px;height:12px;" mode="scaleToFill"/>
+            </view>
+      </view>
+    </view>
+    </block>
+    </view>
+
+    <view wx:if="{{count == 0}}">
+      <view class="re-center">
+          <view class="nor-img"><image src="/image/no-record-yxs.png" style="width:180px;height:180px"/></view>
+          <view class="nor-text">暂无异常消息记录</view>
+      </view>
+  </view>
+</view>

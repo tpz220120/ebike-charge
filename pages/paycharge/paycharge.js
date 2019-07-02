@@ -42,15 +42,17 @@ Page({
             if (app.globalData.userPhone == '') {
               // 绑定后跳转到首页
               wx.navigateTo({ url: '../user/bindphone/bindphone?phone=&url=main' });
+            }else{
+              that.showPlugMsg(id, sessionid);
             }
-             that.showPlugMsg(id, sessionid);
         });
     }else{
         if (app.globalData.userPhone == '') {
           // 绑定后跳转到首页
           wx.navigateTo({ url: '../user/bindphone/bindphone?phone=&url=main' });
-        }
-        this.showPlugMsg(id,app.globalData.sessionid);
+        }else{
+          this.showPlugMsg(id, app.globalData.sessionid);
+        } 
     } 
   },
 
@@ -169,7 +171,7 @@ Page({
               //wx.redirectTo({ url: '../cdxx/cdxx?id=' + cdczno});
             }else{
               // 跳转到提示页面
-              wx.navigateTo({ url: '../tipview/cdview/cdview?status=' + re.data.status});
+              wx.redirectTo({ url: '../tipview/cdview/cdview?status=' + re.data.status});
             }
         },
         fail: () => {
@@ -202,42 +204,48 @@ Page({
         },
         success: (re) => {
           if(re.data != null){
-              var sfmzf;
-            console.log(re.data);
-              if(re.data.sfmzf){
-                  sfmzf = '1';
-              }else{
-                  sfmzf = '0';
-              }
-             
-              var pluginfo = re.data.pluginfo;//插座信息
               var stinfo = re.data.stationinfo;//充电站信息
-              if(pluginfo != null){
-                  this.setData({
-                      pluginfo:pluginfo,
-                  });
-              }
+              var pluginfo = re.data.pluginfo;//插座信息
+              // 是否模板被禁用，入禁用则提示不能充电
+              if (stinfo.disabledSt == 'T'){
+                // 跳转到提示页面
+                wx.redirectTo({ url: '../tipview/cdview/cdview?status=disSt' });
+              }else{
+                var sfmzf;
+                console.log(re.data);
+                if (re.data.sfmzf) {
+                  sfmzf = '1';
+                } else {
+                  sfmzf = '0';
+                }
 
-              if(stinfo != null){
+                if (pluginfo != null) {
                   this.setData({
-                      stationinfo:stinfo,
-                      glbz1:'0<功率≤' + stinfo.stepPower1 + 'W',
-                      glbz2:stinfo.stepPower1 + '<功率≤'+ stinfo.stepPower2 + 'W',
-                      glbz3:stinfo.stepPower2 + '<功率≤'+ stinfo.stepPower3 + 'W',
-                      glbz4:'功率>' + stinfo.stepPower3  + 'W',
+                    pluginfo: pluginfo,
                   });
-              }  
-              var hb = '0';
-              if (typeof (re.data.hbaccount) != 'undefined'){
-                hb = re.data.hbaccount;
-              }
-              
-              this.setData({
-                  sfmzf:sfmzf,
-                  account:re.data.account,
+                }
+
+                if (stinfo != null) {
+                  this.setData({
+                    stationinfo: stinfo,
+                    glbz1: '0<功率≤' + stinfo.stepPower1 + 'W',
+                    glbz2: stinfo.stepPower1 + '<功率≤' + stinfo.stepPower2 + 'W',
+                    glbz3: stinfo.stepPower2 + '<功率≤' + stinfo.stepPower3 + 'W',
+                    glbz4: '功率>' + stinfo.stepPower3 + 'W',
+                  });
+                }
+                var hb = '0';
+                if (typeof (re.data.hbaccount) != 'undefined') {
+                  hb = re.data.hbaccount;
+                }
+
+                this.setData({
+                  sfmzf: sfmzf,
+                  account: re.data.account,
                   hbaccount: hb,
-                  mincharge:re.data.stationinfo.minCharge
-              });
+                  mincharge: re.data.stationinfo.minCharge
+                });
+              }
           }
         },
         fail: () => {
@@ -294,7 +302,7 @@ Page({
             //无效的插座
             }else{
               // 跳转到提示页面
-              wx.navigateTo({ url: '../tipview/cdview/cdview?status=' + re.data.status});
+              wx.redirectTo({ url: '../tipview/cdview/cdview?status=' + re.data.status});
             }
           },
           fail: () => {
@@ -333,7 +341,7 @@ Page({
             //无效的插座
           } else {
             // 跳转到提示页面
-            wx.navigateTo({ url: '../tipview/cdview/cdview?status=' + re.data.status });
+            wx.redirectTo({ url: '../tipview/cdview/cdview?status=' + re.data.status });
           }
         },
         fail: () => {
@@ -386,7 +394,7 @@ Page({
                             //wx.redirectTo({ url: '../cdxx/cdxx?id=' + cdczno });
                           } else {
                             // 跳转到提示页面
-                            wx.navigateTo({ url: '../tipview/cdview/cdview?status=' + re.data.status });
+                            wx.redirectTo({ url: '../tipview/cdview/cdview?status=' + re.data.status });
                           }
                         },
                         fail: () => {
@@ -407,7 +415,7 @@ Page({
               //无效的插座
               }else{
                 // 跳转到提示页面
-                wx.navigateTo({ url: '../tipview/cdview/cdview?status=' + re.data.status});
+                wx.redirectTo({ url: '../tipview/cdview/cdview?status=' + re.data.status});
               }
             },
             fail: () => {

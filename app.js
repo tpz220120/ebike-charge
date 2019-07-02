@@ -3,6 +3,7 @@ App({
   codeid:'',
   httpUrl:'https://xcx.ebike-charge.com',//生产
   //httpUrl:'https://xcxbeta.ebike-charge.com',//测试
+  //httpUrl: 'https://iesmsappletbeta.ebike-charge.com',
   globalData: {
     hasLogin: false,
     userPhone:'',
@@ -10,6 +11,7 @@ App({
     apiH:0,
     sessionid:null,
     expiredTime: 0,
+    office_tel:'0571-81110722'
   },
   onLaunch:function(options) {    
     wx.getSystemInfo({
@@ -79,7 +81,6 @@ App({
                     // 授权成功并且服务器端登录成功
                     that.globalData.sessionid = xcxre.data.sessionid;
                     that.globalData.expiredTime = +new Date();
-                    console.log(that.globalData); 
                     that.globalData.hasLogin = true;
                     that.globalData.userPhone = xcxre.data.phone;
                     resolve(xcxre.data.sessionid);

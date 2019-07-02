@@ -1,5 +1,5 @@
 @import "/style/back.wxss";
-
+@import "/style/card_back_miss.wxss";
 page
 {
     background-color: rgba(255,255,255,1);
@@ -16,6 +16,18 @@ page
  }
 .ye_flex{
   display: flex;
+}
+
+.ye_flex_center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position:relative;
+  top: 88rpx;
+}
+
+.ye_btn{
+  margin-left:40rpx;
 }
 
 .top{
@@ -39,6 +51,7 @@ page
 
 .top_dc{
   height:60rpx;
+  line-height:60rpx;
   width:140rpx;
   border:2px solid rgba(51,153,255,1);
   border-radius:5px;
@@ -47,7 +60,6 @@ page
 .dc_text{
   text-align: center;
   color:rgba(51,153,255,1);
-  line-height:30px;
 }
 
 .item_tip {
@@ -94,8 +106,8 @@ page
 }
 
 .ye_account {
-	position:relative;
-  top: 58rpx;
+	margin-top:25px;
+  margin-bottom:15px;
 }
 
 .ye_img {
@@ -123,24 +135,26 @@ page
     font-size:18px;
 }
 
-.ye_btn {
-	position:relative;
-  top: 88rpx;
-  left:47rpx;
-}
-
 .bottom_btn{
   height:60rpx;
   width:140rpx;
-  border:2px solid rgba(255,255,255,1);
+  border:1px solid rgba(255,255,255,1);
   border-radius:5px;
-  margin-left:36rpx;
-  margin-right:36rpx;
+  margin-right:31rpx;
+  line-height:60rpx;
+}
+
+.bottom_btn_jc{
+  height:60rpx;
+  width:140rpx;
+  border:1px solid rgba(255,255,255,1);
+  border-radius:5px;
+
 }
 
 .bottom_btn_text{
   text-align: center;
-  line-height:30px;
+  font-size:30rpx;
 }
 
 .re-center {

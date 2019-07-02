@@ -73,6 +73,15 @@ Page({
     wx.navigateTo({ url: '../../charge/charge?id=' + e.currentTarget.dataset.stid });
   },
 
+  goNavi(e) {
+    wx.navigateTo({
+      url: '../../navi/navigation_ride/navigation?jd_start=' + this.data.longitude
+        + '&wd_start=' + this.data.latitude
+        + '&jd_end=' + e.currentTarget.dataset.jd
+        + '&wd_end=' + e.currentTarget.dataset.wd
+    });
+  },
+
   onPullDownRefresh() {
     this.showStlist('', true);
   },

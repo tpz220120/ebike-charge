@@ -1,0 +1,61 @@
+page{
+  background:rgba(229,229,229,1);
+  font-size:15px;
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  color:#323232;
+}
+
+.re-center {
+  margin-top:10px;
+  overflow: hidden;
+}
+
+.nor-img {
+   text-align:center; 
+   padding-top:30%;
+}
+
+.nor-text {
+   position:relative;
+   top:5%;
+   margin-top:20px;
+   text-align:center;
+   font-size:20px;
+   color:#CCCCCC 100%;
+}
+
+.yz_cell{
+  margin:15px 10px;
+  background:rgba(255,255,255,1);
+  box-shadow:0px 5px 10px 0px rgba(10,31,51,0.2);
+  border-radius:5px;
+  padding:15px 10px 10px 10px;
+}
+
+.msg_title{
+  font-size:17px;
+  margin-bottom:15px;
+}
+
+
+.msg_tip{
+  color:rgba(42,47,131,1);
+}
+
+.msg_line{
+  margin-top:15px;
+  margin-bottom:10px;
+  height:1px;
+  background:rgba(178,178,178,1);
+
+}
+
+.msg_link{
+  display: flex;
+  align-items: center;
+}
+
+.msg_link_name{
+  width:99%;
+}

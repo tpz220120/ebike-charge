@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
   data: {
       title: '',
@@ -49,7 +50,11 @@ Page({
               title:'温馨提醒',
               resultView:'该二维码无效！',
           })
+      } else if (st == 'disSt') {
+        this.setData({
+          title: '温馨提醒',
+          resultView: '本充电桩只向特定居民开放充电服务,如需申请充电,请拨打客服热线：' + app.globalData.office_tel,
+        })
       }
-  }
-  ,
+   }
 });

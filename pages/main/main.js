@@ -20,6 +20,9 @@ Page({
     ifshow:false,
     qcode:'',//关联二维码扫码进来是否已关联
     tzurl:'',//关联二维码跳转的url
+    jd_end:'',
+    wd_end:'',//导航用
+    read:''// 通知信息是否已读
   },
   
   onShow(){
@@ -71,67 +74,70 @@ Page({
       if (app.globalData.userPhone == '') {
         // 绑定后跳转到首页
         wx.navigateTo({ url: '../user/bindphone/bindphone?phone=&url=main' });
-      }      
-      that.setData({
-        ifshow:true,
-      });
+      }else{
+        that.setData({
+          ifshow: true,
+        });
 
-      if (options.q) {
-        let q = decodeURIComponent(options.q)
-        if (q) {
-          console.log("全局onLaunch onload url=" + q)
-          console.log("全局onLaunch onload 参数 cdczno=" + utils.getQueryString(q, 'cdczno'))
+        if (options.q) {
+          let q = decodeURIComponent(options.q)
+          if (q) {
+            console.log("全局onLaunch onload url=" + q)
+            console.log("全局onLaunch onload 参数 cdczno=" + utils.getQueryString(q, 'cdczno'))
 
-          if (utils.getQueryString(q, 'cdczno')) {
-            // 绑定手机后跳转到支付页面
-            let code = utils.getQueryString(q, 'cdczno');
-            
-            //扫码判断插座状态
-            wx.request({
-              url: app.httpUrl + '/ebike-charge/wxXcx/getCzgk.x',
-              data: {
-                cdczno: code
-              },
-              success: (re) => {
-                // 插座不是空闲，跳转到提示页面
-                if (re.data.status != '0') {
-                  // 跳转到提示页面
-                  that.setData({
-                    tzurl: '../tipview/cdview/cdview?status=' + re.data.status
-                  });
-                } else {
-                  that.setData({
-                    tzurl: '../paycharge/paycharge?id=' + code,
-                    qcode: code,
-                  });
-                }
+            if (utils.getQueryString(q, 'cdczno')) {
+              // 绑定手机后跳转到支付页面
+              let code = utils.getQueryString(q, 'cdczno');
 
-                wx.navigateTo({
-                  url: that.data.tzurl,
-                })
-              },
-              fail: () => {
-                reject({});
-              },
-            });
-          } else if (utils.getQueryString(q, 'device')) {
-            // 绑定手机后跳转到选择插座页面
-            let code = utils.getQueryString(q, 'device');
-            that.setData({
-              tzurl: '../charge/onecharge/onecharge?devno=' + code,
-              qcode: code,
-            });
+              //扫码判断插座状态
+              wx.request({
+                url: app.httpUrl + '/ebike-charge/wxXcx/getCzgk.x',
+                data: {
+                  cdczno: code
+                },
+                success: (re) => {
+                  // 插座不是空闲，跳转到提示页面
+                  if (re.data.status != '0') {
+                    // 跳转到提示页面
+                    that.setData({
+                      tzurl: '../tipview/cdview/cdview?status=' + re.data.status
+                    });
+                  } else {
+                    that.setData({
+                      tzurl: '../paycharge/paycharge?id=' + code,
+                      qcode: code,
+                    });
+                  }
 
-            wx.navigateTo({
-              url: that.data.tzurl,
-            })
+                  wx.navigateTo({
+                    url: that.data.tzurl,
+                  })
+                },
+                fail: () => {
+                  reject({});
+                },
+              });
+            } else if (utils.getQueryString(q, 'device')) {
+              // 绑定手机后跳转到选择插座页面
+              let code = utils.getQueryString(q, 'device');
+              that.setData({
+                tzurl: '../charge/onecharge/onecharge?devno=' + code,
+                qcode: code,
+              });
+
+              wx.navigateTo({
+                url: that.data.tzurl,
+              })
+            }
           }
         }
-      }
 
-      if (that.data.tzurl == ''){
+        that.getSfread(sessionid);
+
+        if (that.data.tzurl == '') {
           that.getJwd();
-      }
+        }
+      }      
     });
   },
 
@@ -204,8 +210,25 @@ Page({
     });    
   },
 
+  getSfread: function (sessionid) {
+    var that = this;
+    wx.request({
+      url: app.httpUrl + '/ebike-charge/logMsg/countMsg.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
+      data: {
+        sessionid: sessionid
+      },
+      success: (re) => {
+          that.setData({
+            read: re.data.no_read_count
+          });
+      }
+    });
+  },
+
   showMainMap:function(longitude, latitude){
     wx.showLoading();
+    console.log(longitude);
+    console.log(latitude);
     var that = this;
     wx.request({
       url: app.httpUrl + '/ebike-charge/wxXcx/getStationList.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
@@ -479,7 +502,9 @@ Page({
                 kxnum:re.data.kxnum,
                 cdnum: parseInt(re.data.plugCount) - parseInt(re.data.kxnum),
                 stid:re.data.id,
-                tipshow: '1'
+                tipshow: '1',
+                jd_end: re.data.longitude,
+                wd_end: re.data.latitude
               });
             }
               
@@ -501,6 +526,14 @@ Page({
     wx.navigateTo({ url: '../charge/charge?id=' + this.data.stid });
   },
 
+  goNavi(e) {
+    wx.navigateTo({
+      url: '../navi/navigation_ride/navigation?jd_start=' + this.data.longitude 
+    + '&wd_start=' + this.data.latitude
+    + '&jd_end=' + this.data.jd_end
+    + '&wd_end=' + this.data.wd_end});
+  },
+
   goMainBtn(e) {
     var id = e.currentTarget.dataset.id;
     // 定位
@@ -514,7 +547,7 @@ Page({
     } else if (id == 3) {
       // 扫码充电
       wx.scanCode({
-        scanType: 'QR_CODE',
+        scanType: 'qrCode',
         success: (res) => {
           console.log(res);
           if (res.result.split('?').length < 2) {
@@ -558,6 +591,9 @@ Page({
           }
         },
       });
+    } else if (id == 4) {
+      // 通知消息推送
+      wx.navigateTo({ url: '../message/message' });
     }
   },
 
