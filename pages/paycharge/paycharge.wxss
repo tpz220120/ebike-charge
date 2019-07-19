@@ -1,22 +1,26 @@
 @import '/style/modal.wxss';
+@import '/style/modal_back.wxss';
 .page
 {
 	font-family: MicrosoftYaHei;
 	font-weight: Regular;
 	font-size:30rpx;
 	color:#323232;
-    background-color: #FFFFFF 100%;
+  background-color: #FFFFFF 100%;
 }
 
 .tg{
   position: absolute;
   top:10rpx;
-  padding:0 25rpx;
-  width:100%;
+  margin:0 3%;
+  width:94%;
   height:58rpx;
   background:rgba(234,238,253,1);
   border:1px solid rgba(141,184,241,1);
   border-radius:25rpx;
+}
+.m5{
+  margin-right:10rpx;
 }
 
 .grid-item-wrapper {

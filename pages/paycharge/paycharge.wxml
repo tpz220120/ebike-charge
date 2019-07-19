@@ -1,7 +1,7 @@
 <view class="page">
-  <view wx:if="{{showPackage}}" class="tg yz_flex_center">
-      <view class="yz_flex">
-           <image src="/image/bike-elc.png" style="width:22px;height:18px" mode="scaleToFill"/>
+  <view wx:if="{{showPackage}}" class="tg yz_flex_center" bindtap="powerDrawer" data-statu="open">
+      <view class="yz_flex m5">
+           <image src="/image/wallet/bike-elc.png" style="width:22px;height:18px" mode="scaleToFill"/>
       </view>
       <view>
             此充电桩正在参与套餐活动...
@@ -9,7 +9,7 @@
   </view>
   <view class="item-wx">
    	<view class="item-wx-text2">
-				<view class="text-n" bindtap="powerDrawer" data-statu="open">{{stationinfo.name}}</view>
+				<view class="text-n">{{stationinfo.name}}</view>
 				<view class="text-s">（设备编号：{{stationinfo.chargeDevNo}} 插座：{{pluginfo.plugSn}}）</view>
 		</view>
 		<view wx:if="{{sfmzf=='0'}}">	
@@ -170,17 +170,30 @@
 <!--使用animation属性指定需要执行的动画-->
 <view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
   <!--drawer content-->
-  <view class="drawer_title">测试弹窗111</view>
-  <view class="drawer_content">
-    <view class="top grid">
-      <label class="title col-0">标题</label>
-      <input class="input_base input_h30 col-1" name="rName" value="可自行定义内容"></input>
-    </view>
-    <view class="top grid">
-      <label class="title col-0">标题</label>
-      <input class="input_base input_h30 col-1" name="mobile" value="110"></input>
-    </view>
+  <view class="drawer_title yz_flex_center">
+      <view class="title_1">
+      </view>
+      <view class="title_text">
+          会员套餐
+      </view>
+      <view  class="title_1">
+      </view>
   </view>
-  <view class="btn_ok" bindtap="powerDrawer" data-statu="close">确定</view>
+  <view class="modal_sel">
+      选择类型
+  </view>
+  <view class="modal_back drawer_content" wx:for="{{packageList}}" wx:key="{{cmpn_id}}" bindtap="gocmpn" data-id ="{{item.cmpn_id}}">
+      <view>
+          <image src="/image/wallet/VIP.png" style="width:19px;height:17px" mode="scaleToFill"/>
+      </view>
+      <view class="modal_text">
+          <block wx:if="{{item.package_type == '1'}}">包月套餐</block>
+          <block wx:if="{{item.package_type == '2'}}">包季套餐</block>
+          <block wx:if="{{item.package_type == '3'}}">包年套餐</block>
+      </view>
+      <view>
+         {{item.package_price}}元
+      </view>
+  </view>
 </view>
 </view>

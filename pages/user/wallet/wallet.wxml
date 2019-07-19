@@ -4,7 +4,7 @@
         <view class="account">
               我的余额（元）
         </view>
-        <view class="recharge" bindtap = "goPage" data-type="cz">
+        <view class="recharge" catchtap = "goPage" data-type="cz">
               去充值
         </view>
      </view>
@@ -47,8 +47,11 @@
   <block wx:if="{{package == 1}}">
     <view wx:for="{{pkgList}}" wx:key="partrecord_id" class="m5 {{item.package_back_css}}" bindtap = "goPage"  data-type="package" data-cmpnid="{{item.cmpn_id}}"  data-userid="{{item.charge_user_id}}">
       <view class="yz_flex wallet_x">
-          <view class="account">
+          <view class="package_t">
                 剩余时长
+          </view>
+          <view class="expiry_data">
+                有效期至{{item.package_end}}
           </view>
       </view>
 
@@ -69,8 +72,13 @@
           </view>
       </view>
 
-      <view class="expiry_data">
-          有效期至{{item.package_end}}
+      <view class="yz_flex_right">
+          <view class="pkg_text3" catchtap="goSt" data-cmpnid="{{item.cmpn_id}}">
+            查看适用电站
+          </view>
+          <view class="in_img">
+            <image src="/image/wallet/in_2.png" style="width:8px;height:11px;" mode="scaleToFill"/>
+          </view>
       </view>
     </view>
   </block>

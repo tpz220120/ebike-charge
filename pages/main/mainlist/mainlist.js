@@ -56,6 +56,7 @@ Page({
         dis: 100,// 100km
       },
       success: (re) => {
+        console.log(re.data);
         that.setData({
           stList: re.data
         })

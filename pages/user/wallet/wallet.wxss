@@ -28,6 +28,13 @@
   margin-left:80rpx;
 }
 
+.package_t{
+  font-family:CTCuHeiSJ;
+  font-size:34rpx;
+  width:54%;
+  margin-left:80rpx;
+}
+
 .recharge{
   width:120rpx;
   color:#FFDF05;
@@ -59,12 +66,32 @@
 
 .expiry_data{
   font-size:22rpx;
-  text-align: right;
-  padding-right:40rpx;
-  padding-top:16rpx;
+  display: flex;
+  justify-content: flex-end;
+  margin-right:30rpx;
 }
 
 .wallet_text{
   font-size:48rpx;
   margin-top:10rpx;
+}
+
+.pkg_text3{
+  font-size:24rpx;
+  font-family:MicrosoftYaHei-Bold;
+  font-weight:bold;
+  color:rgba(255,223,5,1);
+}
+
+.in_img{
+  display: flex;
+  align-items: center;
+  margin:0 30rpx 0 10rpx;
+}
+
+.yz_flex_right{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top:30rpx;
 }

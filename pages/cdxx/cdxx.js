@@ -109,7 +109,7 @@ Page({
         success: (re) => {
           // 充电结束进历史了，直接跳转到历史页面
           if(re.data.status == 'end'){
-             wx.navigateTo({ url: '../main/main'});//暂时跳转到首页
+             wx.redirectTo({ url: '../main/main'});//暂时跳转到首页
           }else{
               console.log(re.data);
               var info = re.data.info;//插座信息

@@ -206,7 +206,7 @@ Page({
                     delta: 1
                   });
                 }else{
-                  wx.navigateTo({ url: '../../main/main' });
+                  wx.redirectTo({ url: '../../main/main' });
                 }
               }
             })

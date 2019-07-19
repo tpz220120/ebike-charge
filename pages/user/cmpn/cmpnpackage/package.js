@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options);
       this.setData({
         cmpnid: options.cmpn_id
       })
@@ -66,13 +67,13 @@ Page({
                 desc = '年';
               }
               wx.showModal({
-                content: '您已成功购买' + desc + "卡，有效期截止到" + re.data.endDate,
+                content: '您已购买' + desc + "卡，有效期至" + re.data.endDate,
                 showCancel: false,
                 success(res) {
-                  // // 跳转到我的钱包
-                  // wx.navigateTo({
-                  //   url: '../../user',
-                  // })
+                  // 跳转回活动页面
+                  wx.navigateTo({
+                    url: '../cmpnList',
+                  })
                 }
               });
             },

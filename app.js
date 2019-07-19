@@ -1,9 +1,9 @@
 
 App({
   codeid:'',
-  //httpUrl:'https://xcx.ebike-charge.com',//生产
+  httpUrl:'https://xcx.ebike-charge.com',//生产
   //httpUrl:'https://xcxbeta.ebike-charge.com',//测试
-  httpUrl: 'https://iesmsappletbeta.ebike-charge.com',
+  //httpUrl: 'https://iesmsappletbeta.ebike-charge.com',
   globalData: {
     hasLogin: false,
     userPhone:'',

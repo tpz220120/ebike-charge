@@ -171,7 +171,7 @@ Page({
         success: (re) => {
             if(re.data.status == '1'){
               // 跳转到
-              wx.redirectTo({ url: '../main/main?msg=true'});
+              wx.reLaunch({ url: '../main/main?msg=true'});
               //wx.redirectTo({ url: '../cdxx/cdxx?id=' + cdczno});
             }else{
               // 跳转到提示页面
@@ -250,7 +250,9 @@ Page({
                   mincharge: re.data.stationinfo.minCharge
                 });
 
-                this.getPackage();
+                if (!re.data.sfmzf){
+                  this.getPackage();
+                }
               }
           }
         },
@@ -268,13 +270,11 @@ Page({
         stid: this.data.stationinfo.id
       },
       success: (re) => {
+        console.log(re.data);
         var c = re.data.jcount;
-        if (c > 0){
-            this.setData({
-              showPackage:true
-            })
-        } 
-
+        this.setData({
+          showPackage: c > 0 ? true :false
+        })
         this.setData({
           packageCount: c,
           packageList: re.data.reList
@@ -320,7 +320,7 @@ Page({
             //根据插座状态跳转页面
             // 跳转到充电信息页面
             if(re.data.status == '0'){
-              wx.redirectTo({ url: '../main/main?msg=true'});
+              wx.reLaunch({ url: '../main/main?msg=true'});
                 //wx.redirectTo({ url: '../cdxx/cdxx?id=' + cdczno});
             //订单生成失败，原因见回传信息
             }else if(re.data.status == '10'){
@@ -360,7 +360,7 @@ Page({
           //根据插座状态跳转页面
           // 跳转到充电信息页面
           if (re.data.status == '0') {
-            wx.redirectTo({ url: '../main/main?msg=true'});
+            wx.reLaunch({ url: '../main/main?msg=true'});
             //订单生成失败，原因见回传信息
           } else if (re.data.status == '10') {
             wx.showModal({
@@ -420,7 +420,7 @@ Page({
                           if (re.data.status == '0' || re.data.status == '1') {
                             // 跳转到充电信息页面
                             console.log(cdczno);
-                            wx.redirectTo({ url: '../main/main?msg=true'});
+                            wx.reLaunch({ url: '../main/main?msg=true'});
                             //wx.redirectTo({ url: '../cdxx/cdxx?id=' + cdczno });
                           } else {
                             // 跳转到提示页面
@@ -456,54 +456,66 @@ Page({
   },
 
   powerDrawer(e) {
-    var currentStatu = e.currentTarget.dataset.statu;
-    
-    /* 动画部分 */
-    // 第1步：创建动画实例 
-    var animation = wx.createAnimation({
-      duration: 200,  //动画时长
-      timingFunction: "linear", //线性
-      delay: 0  //0则不延迟
-    });
+    if(this.data.packageCount > 1){
+      var currentStatu = e.currentTarget.dataset.statu;
 
-    // 第2步：这个动画实例赋给当前的动画实例
-    this.animation = animation;
+      /* 动画部分 */
+      // 第1步：创建动画实例 
+      var animation = wx.createAnimation({
+        duration: 200,  //动画时长
+        timingFunction: "linear", //线性
+        delay: 0  //0则不延迟
+      });
 
-    // 第3步：执行第一组动画
-    animation.opacity(0).rotateX(-100).step();
+      // 第2步：这个动画实例赋给当前的动画实例
+      this.animation = animation;
 
-    // 第4步：导出动画对象赋给数据对象储存
-    this.setData({
-      animationData: animation.export()
-    })
+      // 第3步：执行第一组动画
+      animation.opacity(0).rotateX(-100).step();
 
-    // 第5步：设置定时器到指定时候后，执行第二组动画
-    setTimeout(function () {
-      // 执行第二组动画
-      animation.opacity(1).rotateX(0).step();
-      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象
+      // 第4步：导出动画对象赋给数据对象储存
       this.setData({
-        animationData: animation
+        animationData: animation.export()
       })
 
-      //关闭
-      if (currentStatu == "close") {
+      // 第5步：设置定时器到指定时候后，执行第二组动画
+      setTimeout(function () {
+        // 执行第二组动画
+        animation.opacity(1).rotateX(0).step();
+        // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象
+        this.setData({
+          animationData: animation
+        })
+
+        //关闭
+        if (currentStatu == "close") {
+          this.setData(
+            {
+              showModalStatus: false
+            }
+          );
+        }
+      }.bind(this), 200)
+      // 显示
+      if (currentStatu == "open") {
         this.setData(
           {
-            showModalStatus: false
+            showModalStatus: true
           }
         );
       }
-    }.bind(this), 200)
-
-    // 显示
-    if (currentStatu == "open") {
-      this.setData(
-        {
-          showModalStatus: true
-        }
-      );
+    }else{
+      wx.navigateTo({
+        url: '../user/cmpn/cmpnpackage/package?cmpn_id=' + this.data.packageList[0].cmpn_id
+      })
     }
-  }
+    
+  },
 
+  gocmpn(e) {
+    var cmpnid = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../user/cmpn/cmpnpackage/package?cmpn_id=' + cmpnid
+    })
+  }
 });

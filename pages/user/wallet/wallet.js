@@ -73,4 +73,10 @@ Page({
       })
     }
   },
+  goSt(e) {
+    console.log(e.currentTarget.dataset.cmpnid);
+    wx.navigateTo({
+      url: '../cmpn/cmpnpackage/packageStation?cmpn_id=' + e.currentTarget.dataset.cmpnid,
+    })
+  },
 })

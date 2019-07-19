@@ -25,12 +25,12 @@
               <view class= "main_list_stname">
                 {{item.name}}
               </view>
-              <block wx:if="{{item.cmpn_id != '0'}}">
+              <block wx:if="{{item.cmpn_id != '0' && item.cmpn_id != null}}">
                 <view class="main_list_navi">
                   <image src="/image/list-pkg.png" style="width:52px;height:47px;" mode="scaleToFill"/>
                 </view>
                </block>
-               <block wx:if="{{item.cmpn_id == '0'}}">
+               <block wx:if="{{item.cmpn_id == '0' || item.cmpn_id == null}}">
                 <view class="main_list_navi">
                 </view>
                </block>

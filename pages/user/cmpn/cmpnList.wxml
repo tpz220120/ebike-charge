@@ -38,7 +38,7 @@
               </view>
               <view class="yz_flex_right">
                     <view class="pkg_text3" catchtap="goSt" data-cmpnid="{{item.cmpn_id}}">
-                      查看使用电站
+                      查看适用电站
                     </view>
                     <view>
                       <image src="/image/wallet/in_2.png" style="width:8px;height:11px;" mode="scaleToFill"/>
