@@ -1,0 +1,56 @@
+<view class="page">
+  <view class="{{info.back_css}}">
+    <view class="pkg_padd">
+      <view class="yz_flex">
+            <view class="pkg_text"> 
+                会员套餐
+            </view>
+            <view class="pkg_text2"> 
+                有效期：{{info.package_days}}天
+            </view>
+            <view class="recharge" wx:if="{{info.ycycs > 0}}">
+              使用中
+            </view>
+      </view>
+      <view class="yz_flex m10">
+            <view class="yz_flex"> 
+                <image src="/image/wallet/clock.png" style="width:24px;height:24px;" mode="scaleToFill"/>
+            </view>
+            <view class="pkg_price"> 
+                {{info.package_price}}元
+            </view>
+            <view class="pkg_hours"> 
+                {{info.package_hours}}小时
+            </view>
+      </view>
+    </view>
+  </view>
+  <view class="list">
+      <view class="list_title">
+        关联电站
+      </view>
+
+      <view>
+        <image src="/image/wallet/line.png" style="height:1px;width:100%" mode="scaleToFill"/>
+      </view>
+      <view wx:for="{{stList}}" wx:key="rel_id">
+          <view class="list_text">
+            <view>
+                {{item.st_name}}
+            </view>
+             <view class="yz_flex">
+                <view>
+                  <image src="/image/wallet/loc.png" style="height:8px;width:10px" mode="scaleToFill"/>
+                </view>
+                <view class="list_addr">
+                  {{item.st_addr}}
+                </view>
+            </view>
+          </view>
+      </view>
+    </view>
+
+    <view wx:if="{{info.ycycs == 0}}"class="yz_btn" bindtap="goBuy">
+        立即购买
+    </view>
+</view>

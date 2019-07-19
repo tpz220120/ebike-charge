@@ -1,25 +1,58 @@
 <view class="page">
 <view wx:if = "{{cmpncount >0}}">
       <block wx:for="{{cmpnList}}" wx:key="cmpn_id">
-       <view class="record-cells"data-index="{{index}}" bindtap="goCzhb" data-cmpnid="{{item.cmpn_id}}" >
-          <view class="record-cell">
-				  	   充{{item.recharge_money}}元送{{item.presend_redpkt_money}}元红包
-			   	</view>
-				  <view class="record-cell2">
-             <view class="record-cell2-1">
-                  {{item.cmpn_name}}
+       <view class="{{item.back_css}} {{item.cmpn_type == 'RECHARGE' ? '' :'m'}}"data-index="{{index}}" bindtap="goCzhb" data-cmpnid="{{item.cmpn_id}}" data-type="{{item.cmpn_type}}">
+          <block wx:if="{{item.cmpn_type == 'RECHARGE'}}">
+            <view class="record-cell">
+                充{{item.recharge_money}}元送{{item.presend_redpkt_money}}元红包
+            </view>
+            <view class="record-cell2">
+              <view class="record-cell2-1">
+                    {{item.cmpn_name}}
+                </view>
+                <view class="record-cell2-2">
+                    {{item.create_time_format}}
+                </view>
+            </view>
+          </block>
+          <block wx:if="{{item.cmpn_type == 'PACKAGE'}}">
+             <view class="pkg_padd">
+              <view class="yz_flex">
+                    <view class="pkg_text"> 
+                        会员套餐
+                    </view>
+                    <view class="pkg_text2"> 
+                        有效期：{{item.package_days}}天
+                    </view>
               </view>
-              <view class="record-cell2-2">
-                  {{item.create_time_format}}
+              <view class="yz_flex m10">
+                    <view class="yz_flex"> 
+                        <image src="/image/wallet/clock.png" style="width:24px;height:24px;" mode="scaleToFill"/>
+                    </view>
+                    <view class="pkg_price"> 
+                        {{item.package_price}}元
+                    </view>
+                    <view class="pkg_hours"> 
+                        {{item.package_hours}}小时
+                    </view>
               </view>
-          </view>
+              <view class="yz_flex_right">
+                    <view class="pkg_text3" catchtap="goSt" data-cmpnid="{{item.cmpn_id}}">
+                      查看使用电站
+                    </view>
+                    <view>
+                      <image src="/image/wallet/in_2.png" style="width:8px;height:11px;" mode="scaleToFill"/>
+                    </view>
+              </view>
+             </view>
+          </block>
 	      </view>
 	    </block>
   </view>
   <view wx:if="{{cmpncount == 0}}">
       <view class="re-center">
           <view class="nor-img"><image src="/image/no-hblist.png" style="width:180px;height:180px"/></view>
-          <view class="nor-text">暂无红包活动</view>
+          <view class="nor-text">暂无活动</view>
       </view>
   </view>
 </view>

@@ -1,0 +1,77 @@
+<view class="page">
+  <view class="m10 account_back" bindtap = "goPage" data-type="account">
+     <view class="yz_flex wallet_x">
+        <view class="account">
+              我的余额（元）
+        </view>
+        <view class="recharge" bindtap = "goPage" data-type="cz">
+              去充值
+        </view>
+     </view>
+
+     <view class="yz_flex_bottom wallet_ac">
+        <view class="img_icon">
+          <image src="/image/wallet/money.png" style="width:30px;height:35px;" mode="scaleToFill"/>
+        </view>
+        <view class="money_text">
+          {{account_num}}
+        </view>
+        <view class="img_in">
+          <image src="/image/wallet/in.png" style="width:11px;height:20px;" mode="scaleToFill"/>
+        </view>
+     </view>
+  </view>
+
+  <block wx:if="{{hbaccount == 1}}">
+    <view class="m5 redpkt_back" bindtap = "goPage" data-type="redpkt">
+      <view class="yz_flex wallet_x">
+          <view class="account">
+                我的红包（元）
+          </view>
+      </view>
+
+      <view class="yz_flex_bottom wallet_ac">
+          <view class="img_icon">
+            <image src="/image/wallet/red.png" style="width:27px;height:32px;" mode="scaleToFill"/>
+          </view>
+          <view class="money_text">
+            {{hbaccount_num}}
+          </view>
+          <view class="img_in">
+            <image src="/image/wallet/in.png" style="width:11px;height:20px;" mode="scaleToFill"/>
+          </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{package == 1}}">
+    <view wx:for="{{pkgList}}" wx:key="partrecord_id" class="m5 {{item.package_back_css}}" bindtap = "goPage"  data-type="package" data-cmpnid="{{item.cmpn_id}}"  data-userid="{{item.charge_user_id}}">
+      <view class="yz_flex wallet_x">
+          <view class="account">
+                剩余时长
+          </view>
+      </view>
+
+      <view class="yz_flex_bottom wallet_ac">
+          <view class="img_icon">
+            <image src="/image/wallet/time.png" style="width:27px;height:32px;" mode="scaleToFill"/>
+          </view>
+          <view class="money_text yz_flex">
+            <view>
+              {{item.package_surplus}}
+            </view>
+            <view class="wallet_text">
+              小时
+            </view>
+          </view>
+          <view class="img_in">
+            <image src="/image/wallet/in.png" style="width:11px;height:20px;" mode="scaleToFill"/>
+          </view>
+      </view>
+
+      <view class="expiry_data">
+          有效期至{{item.package_end}}
+      </view>
+    </view>
+  </block>
+</view>

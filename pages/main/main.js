@@ -4,7 +4,7 @@ var app = getApp();
 Page({
   data: {
     tipshow:'0',
-    tipshow2:'0',
+    tipshow2:'2',
     tipname:'',
     stid:'',
     scale: 16,
@@ -22,7 +22,8 @@ Page({
     tzurl:'',//关联二维码跳转的url
     jd_end:'',
     wd_end:'',//导航用
-    read:''// 通知信息是否已读
+    read: '',// 通知信息是否已读
+    package:''
   },
   
   onShow(){
@@ -133,6 +134,7 @@ Page({
         }
 
         that.getSfread(sessionid);
+        that.sftg(sessionid);//是否显示推广页面
 
         if (that.data.tzurl == '') {
           that.getJwd();
@@ -221,6 +223,28 @@ Page({
           that.setData({
             read: re.data.no_read_count
           });
+      }
+    });
+  },
+
+  sftg: function (sessionid) {
+    var that = this;
+    wx.request({
+      url: app.httpUrl + '/ebike-charge/cmpn/getPkgList.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
+      data: {
+        sessionid: sessionid
+      },
+      success: (re) => {
+        var tipshow2;
+        if (re.data.package > 0){
+          tipshow2 = "0"
+        }else{
+          tipshow2 = "2"
+        }
+        that.setData({
+          package: re.data.package,
+          tipshow2: tipshow2
+        });
       }
     });
   },
@@ -516,10 +540,16 @@ Page({
     }
   },
   tap(e) {
+    var tipshow2;
+    if (this.data.package > 0) {
+      tipshow2 = "0"
+    } else {
+      tipshow2 = "2"
+    }
     this.setData({
         tipshow: '0',
-        tipshow2:'0'
-      });
+        tipshow2: tipshow2
+    });
   },
 
   goDetail(e) {
@@ -635,18 +665,23 @@ Page({
   },
 
   goMall(e) {
-    // 西湖购小程序跳转
-    console.log("点击广告跳转西湖购");
-    wx.navigateToMiniProgram({
-      appId: 'wxc92a56ebbba6826c',
-      success(res) {
-        console.log("success=");
-        console.log(res);
-      },
-      fail(re) {
-        console.log("fail=");
-        console.log(re);
-      }
+    // // 西湖购小程序跳转
+    // console.log("点击广告跳转西湖购");
+    // wx.navigateToMiniProgram({
+    //   appId: 'wxc92a56ebbba6826c',
+    //   success(res) {
+    //     console.log("success=");
+    //     console.log(res);
+    //   },
+    //   fail(re) {
+    //     console.log("fail=");
+    //     console.log(re);
+    //   }
+    // })
+
+    //跳转到套餐活动页面
+    wx.navigateTo({
+      url: '../user/cmpn/cmpnList',
     })
   },
 });

@@ -1,0 +1,75 @@
+<!--pages/user/redpkt/redpkt.wxml-->
+<view class="page">
+  <view class="m5 {{info.package_back_css}}">
+      <view class="yz_flex wallet_x">
+          <view class="account">
+                剩余时长
+          </view>
+      </view>
+
+      <view class="yz_flex_bottom wallet_ac">
+          <view class="img_icon">
+            <image src="/image/wallet/time.png" style="width:27px;height:32px;" mode="scaleToFill"/>
+          </view>
+          <view class="money_text yz_flex">
+            <view>
+              {{info.package_surplus}}
+            </view>
+            <view class="wallet_text">
+              小时
+            </view>
+          </view>
+      </view>
+
+      <view class="expiry_data">
+          有效期至{{info.package_end}}
+      </view>
+    </view>
+
+   <view class="month-css">
+      <view class="yz_flex month_font">
+            <view class="w7">{{month}}</view>
+            <view class="yz_flex month-img"><image src="/image/wallet/cal.png" style="width:20px;height:18px"/></view>
+            <view class="month-text"><picker mode="date" value="{{month}}" fields="month" start="{{startDate}}" end="{{endDate}}"  bindchange="getM">选择月份</picker></view>
+      </view>
+      <view>
+        <image src="/image/wallet/line.png" style="width:100%;height:1px"/>
+      </view>
+      <view wx:if = "{{wdqjl > 0}}">
+          <block wx:for="{{reList}}" wx:key="journal_id">
+          <view class="yz_flex line_bottom">
+            <view class="w8">
+                <view class="yz_flex">
+                    <view class="yz_flex">
+                      <image src="/image/wallet/d_time.png" style="width:11px;height:11px"/>
+                    </view>
+                    <view class="l5">
+                      {{item.c_time_format}}
+                    </view>
+                </view>
+                <view class="yz_flex">
+                    <view class="yz_flex">
+                      <image src="/image/wallet/d_money.png" style="width:11px;height:11px"/>
+                    </view>
+                    <view class="l5">
+                      <block wx:if="{{item.journal_type=='2'}}">充电支付</block>
+                      <block wx:if="{{item.journal_type=='3'}}">充电退回</block>
+                    </view>
+                </view>
+            </view>
+            <view>
+                <block wx:if="{{item.journal_dir=='0'}}">-</block>
+                <block wx:if="{{item.journal_dir=='1'}}">+</block>
+                {{item.journal_amout}}小时
+            </view>
+          </view>
+          </block>
+      </view>
+      <view wx:if="{{wdqjl == 0}}">
+          <view class="re-center">
+              <view class="nor-img"><image src="/image/no-cdlist.png" style="width:180px;height:180px"/></view>
+              <view class="nor-text">暂无充电记录</view>
+          </view>
+      </view>
+  </view>
+</view>

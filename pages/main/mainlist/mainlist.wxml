@@ -25,11 +25,16 @@
               <view class= "main_list_stname">
                 {{item.name}}
               </view>
-              <view class="main_list_navi" catchtap="goNavi" data-jd="{{item.longitude}}" data-wd="{{item.latitude}}">
-                <image src="/image/navi.png" style="width:40px;height:20px;" mode="scaleToFill"/>
-              </view>
+              <block wx:if="{{item.cmpn_id != '0'}}">
+                <view class="main_list_navi">
+                  <image src="/image/list-pkg.png" style="width:52px;height:47px;" mode="scaleToFill"/>
+                </view>
+               </block>
+               <block wx:if="{{item.cmpn_id == '0'}}">
+                <view class="main_list_navi">
+                </view>
+               </block>
             </view>
-
             <view wx:for="{{item.devList}}" wx:key="chargedeviceNo" wx:for-item="devItem">
               <view class= "main_list_dev">
                 <view class="main-img">
@@ -52,7 +57,7 @@
                 </view>
               </view>
             </view>
-            <view class= "main_list_addr">
+            <view class= "main_list_addr" catchtap="goNavi" data-jd="{{item.longitude}}" data-wd="{{item.latitude}}">
                 <view class="main-img">
                   <image src="/image/main-lb-addr.png" style="width:14px;height:15px;"mode="scaleToFill"/>
                 </view>

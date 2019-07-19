@@ -26,9 +26,26 @@ Page({
   },
 
   goCzhb(e) {
+    var type = e.currentTarget.dataset.type;
+
+    if (type == 'RECHARGE'){
+      wx.navigateTo({
+        url: 'cmpndetail/cmpndetail?cmpn_id=' + e.currentTarget.dataset.cmpnid,
+      })
+    }else{
+      wx.navigateTo({
+        url: 'cmpnpackage/package?cmpn_id=' + e.currentTarget.dataset.cmpnid,
+      })
+    }
+
+  },
+
+  goSt(e) {
     console.log(e.currentTarget.dataset.cmpnid);
+
     wx.navigateTo({
-      url: 'cmpndetail/cmpndetail?cmpn_id=' + e.currentTarget.dataset.cmpnid,
+      url: 'cmpnpackage/packageStation?cmpn_id=' + e.currentTarget.dataset.cmpnid,
     })
+
   },
 });

@@ -1,0 +1,101 @@
+@import '/style/wallet_back.wxss';
+page{
+  font-size:22rpx;
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  color:rgba(61,61,61,1);
+  background-color: #FEFEFE;
+}
+.m5{
+  margin:10rpx 14rpx 0 14rpx;
+  height:286rpx;
+  color:rgba(255,255,255,1);
+}
+
+.wallet_x{
+  padding-top:20rpx; 
+}
+
+.account{
+  font-family:CTCuHeiSJ;
+  font-size:34rpx;
+  width:65%;
+  margin-left:80rpx;
+}
+
+.wallet_ac{
+  margin-top:20rpx;
+}
+
+.img_icon{
+  margin-left:120rpx;
+  margin-right:40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.money_text{
+  width:56%;
+  margin-top:10rpx;
+  font-size:70rpx;
+}
+
+.expiry_data{
+  font-size:22rpx;
+  text-align: right;
+  padding-right:40rpx;
+  padding-top:16rpx;
+}
+
+.wallet_text{
+  font-size:48rpx;
+  margin-top:10rpx;
+}
+
+.month-css{
+  padding:32rpx 52rpx;
+}
+
+.month_font{
+  font-size:26rpx;
+  color:rgba(40,40,40,1);
+}
+
+.w7{
+  width:70%;
+}
+
+.w8{
+  width:80%;
+}
+
+.l5{
+  margin-left:10rpx;
+}
+
+.month-img{
+  margin-right:20rpx;
+}
+.line_bottom{
+  border-bottom: 1px solid rgba(230,230,230,1);
+  padding: 14rpx 0;
+}
+
+.re-center {
+  margin-top:10px;
+  overflow: hidden;
+}
+
+.nor-img {
+   text-align:center; 
+   padding-top:30%;
+}
+
+.nor-text {
+   position:relative;
+   top:5%;
+   margin-top:20px;
+   text-align:center;
+   font-size:20px;
+   color:#CCCCCC 100%;
+}

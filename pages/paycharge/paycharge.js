@@ -21,6 +21,9 @@ Page({
     mincharge:0,
     yebzzf:'',
     hbbzzf: '',
+    cmpn_id:'',
+    showModalStatus:false,
+    showPackage:false
   },
   onLoad(option) {
     console.log('option.id ==' + option.id);
@@ -157,12 +160,13 @@ Page({
   mfcd(){
     var cdczno = this.data.pluginfo.chargeplugNo;
     var sessionid = app.globalData.sessionid;
-
+    var cmpn_id = this.data.cmpn_id;
     wx.request({
         url: app.httpUrl + '/ebike-charge/wxXcx/startMfcd.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
         data: {
           cdczno:cdczno,
           sessionid:sessionid,
+          cmpn_id: cmpn_id
         },
         success: (re) => {
             if(re.data.status == '1'){
@@ -212,7 +216,6 @@ Page({
                 wx.redirectTo({ url: '../tipview/cdview/cdview?status=disSt' });
               }else{
                 var sfmzf;
-                console.log(re.data);
                 if (re.data.sfmzf) {
                   sfmzf = '1';
                 } else {
@@ -241,15 +244,42 @@ Page({
 
                 this.setData({
                   sfmzf: sfmzf,
+                  cmpn_id: re.data.cmpn_id,
                   account: re.data.account,
                   hbaccount: hb,
                   mincharge: re.data.stationinfo.minCharge
                 });
+
+                this.getPackage();
               }
           }
         },
         fail: () => {
         },
+    });
+  },
+
+  // 页面
+  getPackage() {
+    console.log(this.data.stationinfo.id);
+    wx.request({
+      url: app.httpUrl + '/ebike-charge/cmpn/getCmpnListByStid.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
+      data: {
+        stid: this.data.stationinfo.id
+      },
+      success: (re) => {
+        var c = re.data.jcount;
+        if (c > 0){
+            this.setData({
+              showPackage:true
+            })
+        } 
+
+        this.setData({
+          packageCount: c,
+          packageList: re.data.reList
+        })
+      }
     });
   },
 
@@ -424,4 +454,56 @@ Page({
         }     
     }
   },
+
+  powerDrawer(e) {
+    var currentStatu = e.currentTarget.dataset.statu;
+    
+    /* 动画部分 */
+    // 第1步：创建动画实例 
+    var animation = wx.createAnimation({
+      duration: 200,  //动画时长
+      timingFunction: "linear", //线性
+      delay: 0  //0则不延迟
+    });
+
+    // 第2步：这个动画实例赋给当前的动画实例
+    this.animation = animation;
+
+    // 第3步：执行第一组动画
+    animation.opacity(0).rotateX(-100).step();
+
+    // 第4步：导出动画对象赋给数据对象储存
+    this.setData({
+      animationData: animation.export()
+    })
+
+    // 第5步：设置定时器到指定时候后，执行第二组动画
+    setTimeout(function () {
+      // 执行第二组动画
+      animation.opacity(1).rotateX(0).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象
+      this.setData({
+        animationData: animation
+      })
+
+      //关闭
+      if (currentStatu == "close") {
+        this.setData(
+          {
+            showModalStatus: false
+          }
+        );
+      }
+    }.bind(this), 200)
+
+    // 显示
+    if (currentStatu == "open") {
+      this.setData(
+        {
+          showModalStatus: true
+        }
+      );
+    }
+  }
+
 });

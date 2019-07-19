@@ -1,0 +1,98 @@
+@import '/style/wallet_back.wxss';
+.pkg_padd{
+  height:280rpx;
+  padding:20rpx 30rpx 20rpx 40rpx;
+  font-size:44rpx;
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+}
+
+page{
+  font-size:24rpx;
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  color:rgba(61,61,61,1);
+  background-color: #fefefe;
+}
+
+.pkg_text{
+  font-size:34rpx;
+  font-family:CTCuHeiSJ;
+  margin-right:20rpx;
+}
+
+.pkg_text2{
+  margin-top:10rpx;
+  font-size:24rpx;
+  font-family:CTCuHeiSJ;
+  width:55%;
+}
+
+.pkg_hours{
+    width:120rpx;
+    color:#FFFFFF;
+    font-size:20rpx;
+    border-radius: 20rpx;
+    border:1px solid #FFFFFF;
+    text-align: center;
+}
+
+.m10{
+  margin-top:60rpx;
+  margin-bottom:30rpx;
+  margin-left:100rpx;
+}
+
+
+.pkg_price{
+  text-align:center;
+  width:140rpx;
+  margin-left:14rpx;
+  margin-right:20rpx;
+}
+
+.list{
+  margin:30rpx 50rpx 138rpx 50rpx;
+}
+
+.list_title{
+  font-size:32rpx;
+  color:rgba(40,40,40,1);
+}
+
+.list_text{
+  margin-top:16rpx;
+  margin-bottom:14rpx;
+}
+
+.list_addr{
+  margin-left:18rpx;
+  font-size:22rpx;
+  color:rgba(107,105,105,1);
+}
+
+.yz_btn{
+  position: fixed;
+  bottom:24rpx;
+  height:90rpx;
+  width:96%;
+  font-size:34rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  background-color: #108ee9;
+  border-color: #108ee9;
+  text-align: center;
+  margin:24rpx 2% 0 2%;
+  line-height:90rpx;
+}
+
+.recharge{
+  width:120rpx;
+  color:#FFDF05;
+  font-size:26rpx;
+  border-radius: 20rpx;
+  border:1px solid #FFDF05;
+  text-align: center;
+  margin-top:10rpx;
+}

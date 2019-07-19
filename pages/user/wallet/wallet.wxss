@@ -1,0 +1,70 @@
+@import '/style/wallet_back.wxss';
+.page{
+  font-size:35px;
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+  background-color: #FEFEFE;
+}
+
+.m10{
+  margin:20rpx 14rpx 0 14rpx;
+  height:280rpx;
+}
+
+.m5{
+  margin:10rpx 14rpx 0 14rpx;
+  height:280rpx;
+}
+
+.wallet_x{
+  padding-top:20rpx; 
+}
+
+.account{
+  font-family:CTCuHeiSJ;
+  font-size:34rpx;
+  width:65%;
+  margin-left:80rpx;
+}
+
+.recharge{
+  width:120rpx;
+  color:#FFDF05;
+  font-size:26rpx;
+  border-radius: 20rpx;
+  border:1px solid #FFDF05;
+  text-align: center;
+}
+
+.wallet_ac{
+  margin-top:20rpx;
+}
+
+.img_icon{
+  margin-left:120rpx;
+  margin-right:40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.money_text{
+  width:56%;
+}
+
+.img_in{
+  position:relative;
+  bottom:18rpx;
+}
+
+.expiry_data{
+  font-size:22rpx;
+  text-align: right;
+  padding-right:40rpx;
+  padding-top:16rpx;
+}
+
+.wallet_text{
+  font-size:48rpx;
+  margin-top:10rpx;
+}

@@ -48,7 +48,8 @@ Page({
     if(i ==2){
       wx.navigateTo({ url: 'user-cdjl/user-cdjl' });
     }else if(i ==0){
-      wx.navigateTo({ url: 'cz/cz' });
+      //wx.navigateTo({ url: 'cz/cz' });
+      wx.navigateTo({ url: 'wallet/wallet' });
     }else if(i ==1){
       wx.navigateTo({ url: 'xfjl/xfjl' });
     }else if(i ==3){

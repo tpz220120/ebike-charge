@@ -1,0 +1,27 @@
+page{
+  font-size:24rpx;
+  font-family:MicrosoftYaHei;
+  font-weight:400;
+  color:rgba(61,61,61,1);
+  background-color: #fefefe
+}
+
+.list{
+  margin:30rpx 50rpx;
+}
+
+.list_title{
+  font-size:32rpx;
+  color:rgba(40,40,40,1);
+}
+
+.list_text{
+  margin-top:16rpx;
+  margin-bottom:14rpx;
+}
+
+.list_addr{
+  margin-left:18rpx;
+  font-size:22rpx;
+  color:rgba(107,105,105,1);
+}

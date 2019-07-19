@@ -30,7 +30,11 @@
     "pages/user/card/cz/cz",
     "pages/navi/navigation_ride/navigation",
     "pages/navi/navigation_ride_detail/navigation",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/user/wallet/wallet",
+    "pages/user/cmpn/cmpnpackage/package",
+    "pages/user/cmpn/cmpnpackage/packageStation",
+    "pages/user/wallet/walletDetail/walletDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

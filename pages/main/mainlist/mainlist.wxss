@@ -24,17 +24,16 @@
 }
 
 .main_list_stname{
-  padding:10px 0 10px 10px;
+  padding:10px 0 10px 20px;
   font-size:17px;
   font-weight:500;
   color:rgba(50,50,50,1);
   width:82%;
+  flex:1;
 }
 
 .main_list_navi{
-  padding:10px 0 10px;
   display: flex;
-  align-items: center;
 }
 
 .main_list_dev{
@@ -74,4 +73,11 @@
   margin-right:10px;
   line-height:15px;
   word-wrap: break-word;
+}
+
+.main_list_pkg{
+  position: relative;
+  left:400px;
+  top:0px;
+  z-index: 100;
 }

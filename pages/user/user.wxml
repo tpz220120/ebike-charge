@@ -32,11 +32,23 @@
                         data-index='0'>
                         <view class="a-list-item-line">
                             <image class="a-list-item-thumb" src="/image/center-cz.png" mode="scaleToFill" />
-                            <text class="a-list-item-content">我要充值(余额：{{account_num}}元)</text>
+                            <text class="a-list-item-content">我的钱包(余额：{{account_num}}元)</text>
                             <view class="a-list-arrow a-list-arrow-horizontal" />
                             <view class="a-list-item-bottom" />
                         </view>
                     </view>
+                     <view class="a-list-item am-list-item-middle"
+                        hover-class="a-list-item-hover"
+                        bindtap="handleListItemTap"
+                        data-index='8'>
+                        <view class="a-list-item-line">
+                            <image class="a-list-item-thumb" src="/image/center-card.png" mode="scaleToFill" />
+                            <text class="a-list-item-content">我的充电卡</text>
+                            <view class="a-list-arrow a-list-arrow-horizontal" />
+                            <view class="a-list-item-bottom" />
+                        </view>
+                      </view>
+                      <!--
                     <view class="a-list-item am-list-item-middle"
                         hover-class="a-list-item-hover"
                         bindtap="handleListItemTap"
@@ -48,19 +60,6 @@
                             <view class="a-list-item-bottom" />
                         </view>
                       </view>
-
-                      <view class="a-list-item am-list-item-middle"
-                        hover-class="a-list-item-hover"
-                        bindtap="handleListItemTap"
-                        data-index='8'>
-                        <view class="a-list-item-line">
-                            <image class="a-list-item-thumb" src="/image/center-card.png" mode="scaleToFill" />
-                            <text class="a-list-item-content">我的充电卡</text>
-                            <view class="a-list-arrow a-list-arrow-horizontal" />
-                            <view class="a-list-item-bottom" />
-                        </view>
-                      </view>
-
                       <view class="a-list-item am-list-item-middle"
                         hover-class="a-list-item-hover"
                         bindtap="handleListItemTap"
@@ -71,7 +70,7 @@
                             <view class="a-list-arrow a-list-arrow-horizontal" />
                             <view class="a-list-item-bottom" />
                         </view>
-                      </view>
+                      </view>-->
                       <view class="a-list-item am-list-item-middle"
                         hover-class="a-list-item-hover"
                         bindtap="handleListItemTap"
@@ -124,7 +123,7 @@
                         data-index='6'>
                         <view class="a-list-item-line">
                             <image class="a-list-item-thumb" src="/image/center-czhb.png" mode="scaleToFill" />
-                            <text class="a-list-item-content">充值送红包</text>
+                            <text class="a-list-item-content">活动中心</text>
                             <view class="a-list-arrow a-list-arrow-horizontal" />
                             <view class="a-list-item-bottom" />
                         </view>

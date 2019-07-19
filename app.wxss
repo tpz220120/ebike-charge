@@ -4,3 +4,22 @@ page {
   background-color: #F7F7F7;
   box-sizing: border-box;
 }
+
+.yz_flex{
+  display: flex;
+  align-items: center;
+}
+
+.yz_flex_bottom{
+  display: flex;
+  align-items: baseline;
+}
+
+.yz_flex_center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weui-search-bar__cancel-btn{
+  color:#3399FF;
+}
