@@ -110,7 +110,6 @@ Page({
             var dd = JSON.parse(re.data);
             console.log(dd.status);
             if(dd.status == '1'){
-
               wx.showModal({
                 content: '您的' + sm + '提交成功，请耐心等待反馈！',
                 showCancel: false,

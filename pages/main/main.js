@@ -1,10 +1,10 @@
-var utils = require('../../util/util')
+var utils = require('../../util/util');
 var app = getApp();
 //地图展示附近100km之内的99个电站，无论地图缩放还是变大，如果中心点不变化不重新加载
 Page({
   data: {
     tipshow:'0',
-    tipshow2:'2',
+    tipshow2:'2', // 推广图片
     tipname:'',
     stid:'',
     scale: 16,
@@ -23,7 +23,8 @@ Page({
     jd_end:'',
     wd_end:'',//导航用
     read: '',// 通知信息是否已读
-    package:''
+    package:'',
+    adv_pic:''//广告图片链接
   },
   
   onShow(){
@@ -83,7 +84,6 @@ Page({
         if (options.q) {
           let q = decodeURIComponent(options.q)
           if (q) {
-            console.log("全局onLaunch onload url=" + q)
             console.log("全局onLaunch onload 参数 cdczno=" + utils.getQueryString(q, 'cdczno'))
 
             if (utils.getQueryString(q, 'cdczno')) {
@@ -134,8 +134,7 @@ Page({
         }
 
         that.getSfread(sessionid);
-        //that.sftg(sessionid);//是否显示推广页面
-
+        that.sftg();//是否显示推广页面
         if (that.data.tzurl == '') {
           that.getJwd();
         }
@@ -148,13 +147,11 @@ Page({
     wx.getSetting({
       success(setRes) {
         // 判断是否已授权
-        console.log(setRes.authSetting);
         if (!setRes.authSetting['scope.userLocation']) {
           // 授权访问
           wx.authorize({
             scope: 'scope.userLocation',
             success() {
-              cosole.log(222);
               wx.getLocation({
                 type: 'gcj02',
                 success(res) {
@@ -227,19 +224,40 @@ Page({
     });
   },
 
-  sftg: function (sessionid) {
+  sftg: function () {
     var that = this;
+    // wx.request({
+    //   url: app.httpUrl + '/ebike-charge/cmpn/getPkgList.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
+    //   success: (re) => {
+    //     var tipshow2;
+    //     if (re.data.package > 0){
+    //       tipshow2 = "0"
+    //     }else{
+    //       tipshow2 = "2"
+    //     }
+    //     that.setData({
+    //       package: re.data.package,
+    //       tipshow2: tipshow2
+    //     });
+    //   }
+    // });
+
     wx.request({
-      url: app.httpUrl + '/ebike-charge/cmpn/getPkgList.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
+      url: app.httpUrl + '/ebike-charge/wxcommon/getCode.x', 
+      data: {
+        code_type: 'ADV_PIC'
+      },
       success: (re) => {
         var tipshow2;
-        if (re.data.package > 0){
+        if (re.data.info){
           tipshow2 = "0"
+          that.setData({
+            adv_pic: re.data.info.value
+          });
         }else{
           tipshow2 = "2"
         }
         that.setData({
-          package: re.data.package,
           tipshow2: tipshow2
         });
       }
@@ -248,8 +266,6 @@ Page({
 
   showMainMap:function(longitude, latitude){
     wx.showLoading();
-    console.log(longitude);
-    console.log(latitude);
     var that = this;
     wx.request({
       url: app.httpUrl + '/ebike-charge/wxXcx/getStationList.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
@@ -294,8 +310,6 @@ Page({
           marketc.height = 33;
           marketc.iconPath = '/image/mark-dw.png';
           insStDate[st.length] = marketc;
-
-          console.log(insStDate);
           that.setData({
             //includePoints:includeDate,
             markers: insStDate,
@@ -336,7 +350,6 @@ Page({
   },
 
   controltap(e) {
-    console.log(e.controlId);
     // 定位
     var that = this;
     if (e.controlId === 6) {
@@ -413,8 +426,6 @@ Page({
                   latitude: res.latitude,
                   regionover: true,
                 });
-
-                console.log(that.data.regionover);
                 wx.hideLoading();
               }
             },
@@ -435,7 +446,6 @@ Page({
 
   regionchange(e) {
     // 上一次跟本次移动的经纬度一致的情况下，不重复调用
-    console.log(e);
     // 注意：如果缩小或者放大了地图比例尺以后，请在 onRegionChange 函数中重新设置 data 的
     // scale 值，否则会出现拖动地图区域后，重新加载导致地图比例尺又变回缩放前的大小。
     if (e.type === 'end' && this.data.sfjz && this.data.regionover && e.causedBy === 'drag') {
@@ -490,8 +500,6 @@ Page({
                   latitude: res.latitude,
                   regionover: true,
                 });
-
-                console.log(that.data.regionover);
                 wx.hideLoading();
               }
             },
@@ -576,7 +584,6 @@ Page({
       wx.scanCode({
         scanType: 'qrCode',
         success: (res) => {
-          console.log(res);
           if (res.result.split('?').length < 2) {
             wx.navigateTo({ url: '../tipview/cdview/cdview?status=wx' });
           } else {
@@ -637,11 +644,9 @@ Page({
     wx.getSetting({
       success(setRes) {
         // 判断是否已授权
-        console.log(setRes.authSetting);
         if (!setRes.authSetting['scope.userLocation']) {
               wx.openSetting({
                 success(res) {
-                  console.log(res.authSetting['scope.userLocation']);
                   if (res.authSetting['scope.userLocation']) {
                     that.getCenter();
                   } else {
@@ -651,7 +656,6 @@ Page({
                     });
                   }
                 }, fail(res) {
-                  console.log(2222232);
                 }
               })
         } else {
@@ -663,23 +667,26 @@ Page({
 
   goMall(e) {
     // 西湖购小程序跳转
-    console.log("点击广告跳转西湖购");
     wx.navigateToMiniProgram({
       appId: 'wxc92a56ebbba6826c',
       success(res) {
-        console.log("success=");
-        console.log(res);
+
       },
       fail(re) {
-        console.log("fail=");
-        console.log(re);
+
       }
     })
   },
-    goPackage(e) {
+  goPackage(e) {
     //跳转到套餐活动页面
     wx.navigateTo({
       url: '../user/cmpn/cmpnList',
+    })
+  },
+
+  goClose(){
+    this.setData({
+      tipshow2:'2'
     })
   },
 });

@@ -96,6 +96,11 @@ page {
   margin:10px 10px 0 10px;
 }
 
+.ad_controls2 {
+  position: absolute;
+  top: 6%;
+}
+
 .page-tip2 {
   display: flex;
   flex-direction: row;

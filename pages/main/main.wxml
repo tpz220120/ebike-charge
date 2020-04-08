@@ -72,9 +72,19 @@
           </cover-view>
         </cover-view>
       </cover-view>
+      <!-- 新增优惠活动页 -->
       <!-- <cover-view class="ad_controls"  wx:if="{{tipshow2==='0'}}" bindtap="goPackage">
               <cover-image src="/image/wallet/tg.png" mode="scaleToFill"/>
       </cover-view> -->
+      <!-- 新增超市推广广告页 -->
+      <cover-view class="ad_controls2" wx:if="{{tipshow2==='0'}}">
+          <cover-view class="yz_flex_center" bindtap="goMall">
+              <cover-image src="{{adv_pic}}" style="width:90%;height:100%" mode="scaleToFill"/>
+          </cover-view>
+          <cover-view class="yz_flex_center"  bindtap="goClose">
+              <cover-image src="/image/mall/close.png" style="width:30px;height:30px;" mode="scaleToFill"/>
+          </cover-view>            
+      </cover-view>
 
       <cover-view wx:if="{{read == '0'}}" class="main_sendmsg" bindtap="goMainBtn" data-id="4">
            <cover-image src="/image/main-msg-read.png" style="width:50px;height:50px;"mode="scaleToFill"/>
@@ -92,12 +102,12 @@
            <cover-image src="/image/main-tsjy.png" style="width:50px;height:50px;"mode="scaleToFill"/>
       </cover-view>
 
-      <cover-view class="main_help" data-id="2" bindtap="goMainBtn">
+      <cover-view class="main_mall" data-id="2" bindtap="goMainBtn">
            <cover-image src="/image/main-sm.png" style="width:50px;height:50px;"mode="scaleToFill"/>
       </cover-view>
 
-      <cover-view class="main_mall" bindtap="goMall">
-           <cover-image src="/image/main-mall.png" style="width:50px;height:50px;"mode="scaleToFill"/>
+      <cover-view class="main_help" bindtap="goMall">
+           <cover-image src="/image/main-mall2.png" style="width:50px;height:50px;"mode="scaleToFill"/>
       </cover-view>
 
       <cover-view class="main_scan" data-id="3" bindtap="goMainBtn">
@@ -105,4 +115,5 @@
       </cover-view>
     </map>
   </view>
+
 </view>
