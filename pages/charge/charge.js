@@ -126,7 +126,6 @@ Page({
 
   goCd(e) {
     //充电状态为空闲跳转到支付页面
-    console.log(e.currentTarget.dataset);
     if(e.currentTarget.dataset.cdzt == '0'){
       wx.navigateTo({ url: '../paycharge/paycharge?id=' + e.currentTarget.dataset.cdczno});
     // 充电状态为充电中，跳转到充电信息页面

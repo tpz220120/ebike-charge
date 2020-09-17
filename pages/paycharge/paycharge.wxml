@@ -31,7 +31,14 @@
 				<input type="number" bindinput="bindKeyInput" class="cz_czje_num"  id="num" placeholder="请输入支付金额" value="{{zfje}}"/>
 	   		</view>
 	   		<view class="cz_czje_btn">
-				<button class="cz_czje_btntext" data-zfje="{{zfje}}" bindtap="ljzf">确定</button>
+				 	<block wx:if="{{showUserBtn}}">
+						<button class="cz_czje_btntext" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="ljzf">
+							确认支付
+						</button>
+					</block>
+					<block wx:else>
+						<button class="cz_czje_btntext" bindtap="ljzf">确定</button>
+					</block>
 	   		</view>
 	   	</view>
    		<view class="item_title2">
@@ -159,9 +166,9 @@
 					</view>	
 				</radio-group>
 		    </view>
-			<view class="zf_btntext" bindtap="qrzf">
-				确认支付
-			</view>
+				<view class="zf_btntext" bindtap="qrzf">
+					确认支付
+				</view>
 		</view>
 	</view>
   <!--mask-->

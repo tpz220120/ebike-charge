@@ -15,6 +15,9 @@ Page({
       oldphone:option.phone,
       tzurl: option.url
     })
+
+    //获得dialog组件
+    this.dialog = this.selectComponent("#dialog");
   },
 
   bindKeyInputPhone(e){
@@ -42,30 +45,31 @@ Page({
   
   smsButtonInterval:function(){
     var that=this;
-    that.data.timer = setInterval(
-      function () {
-          that.setData({
-              second:that.data.second - 1
-          })
+    
+  that.data.timer = setInterval(
+    function () {
+        that.setData({
+            second:that.data.second - 1
+        })
 
-          if(that.data.second==0){
-            that.setData({
-              yzmtext:'获取验证码',
-              sffsdx:false,
-              second:60,
-            })
-            clearInterval(that.data.timer);//清除定时器
-          }else{
-            that.setData({
-              yzmtext:that.data.second +"秒后可重发",
-            })
-          }
-      }
-    , 1000);   
+        if(that.data.second==0){
+          that.setData({
+            yzmtext:'获取验证码',
+            sffsdx:false,
+            second:60,
+          })
+          clearInterval(that.data.timer);//清除定时器
+        }else{
+          that.setData({
+            yzmtext:that.data.second +"秒后可重发",
+          })
+        }
+    }
+    , 1000);
 
     that.setData({
-        yzmtext:that.data.second +"秒后可重发",
-        sffsdx:true,
+      yzmtext:that.data.second +"秒后可重发",
+      sffsdx:true,
     })
   },
 
@@ -129,8 +133,22 @@ Page({
 		}
   },
 
-  bindPhone(){
+  bindPhone(e){
 		if(this.validateBindPhone()){
+      //先弹出用户获取信息页面
+      console.log(e.detail.userInfo);
+      if(e.detail.userInfo){
+        var info = e.detail.userInfo;
+        var param={
+          region:info.country + "@" + info.province + "@" + info.city,
+          sessionid:app.globalData.sessionid,
+          sex:info.gender,
+          name:info.nickName
+        }
+        console.log(param);
+        this.saveUserInfo(param);
+      }
+      
 			this.bindPhone_submit();
 		}
 	},
@@ -226,5 +244,68 @@ Page({
         },
     });
 		
-	},
+  },
+  
+  getPhone(e){
+    console.log(e.detail);
+    if(e.detail.iv){
+      var that = this;
+      app.getSessionId().then(function (sessionid) {
+        wx.request({
+          url: app.httpUrl + '/ebike-charge/userInfo/savePhoneWechat.x', //这里就写上后台解析手机号的接口
+          data: {
+            encryptDataB64: e.detail.encryptedData,
+            sessionid: sessionid,
+            ivB64: e.detail.iv
+          },
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded' // POST请求
+          },
+          success(res) {
+            console.log(res);
+            if (res.data.userPhone){
+              app.globalData.userPhone = res.data.userPhone;
+            }
+          },complete:()=>{
+            that.showDialog();
+          }
+        })
+      });
+    }
+    
+  },
+
+  showDialog: function () {
+    this.dialog.showDialog();
+  },
+
+  confirmEvent: function () {
+    this.dialog.hideDialog();
+  },
+
+  goNext(){
+    wx.redirectTo({
+      url: '../../main/main',
+    })
+  },
+
+  saveUserInfo(param){
+    wx.request({
+      url: app.httpUrl + '/ebike-charge/userInfo/saveUserInfoWechat.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
+      data: param,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method:'POST',
+      success: (re) => {
+        app.globalData.userRegion = param.userRegion;
+        console.log(app.globalData.userRegion);
+      },
+      fail: () => {
+      },
+      complete:() =>{
+      }
+  });
+  }
 });

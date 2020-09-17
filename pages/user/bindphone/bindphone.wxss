@@ -94,3 +94,39 @@ border-radius:5px;
 text-align:center;
 line-height:50px;
 }
+
+.wechat_view{
+  width:100%;
+  position:absolute;
+  top:520px;
+  font-size:22rpx;
+  font-family:MicrosoftYaHei;
+  color:rgba(128,128,128,1);
+  margin-top:50rpx;
+}
+
+.line_view{
+  width:100%;
+  padding:0 3%;
+  height:30rpx;
+  margin-bottom:40rpx;
+  box-sizing: border-box;
+}
+
+.line{
+  width:35%;
+  border:1rpx solid rgba(229,229,229,1);
+}
+
+.line_text{
+  width:30%;
+  text-align:center;
+  line-height:30rpx;
+}
+
+.m10{
+  margin-top:10rpx;
+}
+button[plain]{
+  border:0;
+}

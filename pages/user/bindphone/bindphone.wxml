@@ -16,5 +16,34 @@
     	<view class="bd-2"><input class="weui-input" bindinput="bindKeyInputYzm" type="number" placeholder="请输入验证码"/></view>
     	<view class="weui-flex__item yzm-btn" bindtap="getyzm">{{yzmtext}}</view>
     </view>
-	   <view class="bd-btn" bindtap="bindPhone">绑定手机</view>
+	  <button class="bd-btn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindPhone">绑定手机</button>
+
+		<view class="wechat_view"wx:if="{{oldphone == ''}}">
+				<view class="yz_flex line_view">
+					<view class="line yz_flex">
+					</view>
+					<view class="line_text">
+							其他授权方式
+					</view>
+					<view class="line yz_flex">
+					</view>
+				</view>
+
+					<button class="yz_flex_center" plain open-type="getPhoneNumber" bindgetphonenumber="getPhone">
+						<image src="/image/wechat.png" style="height:30px;width:30px"/>
+					</button>
+
+				<view class="yz_flex_center m10">
+							微信授权
+				</view>
+		</view>
+
 </view>
+
+<dialog id='dialog' 
+      title='提示' 
+      content='手机号已经绑定成功。小程序需要您授权基本信息，以便于更好体验驿吧的功能！' 
+      confirmText='知道了'
+      bind:confirmEvent='confirmEvent'
+      bind:goNext='goNext'>
+</dialog>

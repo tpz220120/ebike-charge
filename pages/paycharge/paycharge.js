@@ -23,12 +23,13 @@ Page({
     hbbzzf: '',
     cmpn_id:'',
     showModalStatus:false,
-    showPackage:false
+    showPackage:false,
+    showUserBtn:false
   },
   onLoad(option) {
-    console.log('option.id ==' + option.id);
-    console.log('sessionid ==' + app.globalData.sessionid);
-    console.log('app.codeid ==' + app.codeid);
+    // console.log('option.id ==' + option.id);
+    // console.log('sessionid ==' + app.globalData.sessionid);
+    // console.log('app.codeid ==' + app.codeid);
     var id;
     // 如果是外面扫码那么判断是否有全局变量的扫码id在
     if(app.codeid != ''){
@@ -36,6 +37,12 @@ Page({
       app.codeid = '';
     }else{
       id = option.id;
+    }
+    // 如果支付的时候发现用户无保存地址的话，需要授权保存地址信息
+    if(app.globalData.userRegion == ''){
+      this.setData({
+        showUserBtn:true
+      })
     }
 
     // 此id为充电插座编号
@@ -103,6 +110,20 @@ Page({
 
   //按时按量确认支付
   ljzf(e){
+    if(this.data.showUserBtn && e.detail.userInfo){
+      var that = this;
+      app.getSessionId().then(function(sessionid){
+        var info = e.detail.userInfo;
+        var param={
+          region:info.country + "@" + info.province + "@" + info.city,
+          sessionid:sessionid,
+          sex:info.gender,
+          name:info.nickName
+        }
+        that.saveUserInfo(param);
+      });
+    }
+
     if (this.data.zfje == ''){
       wx.showModal({
         content: '请输入支付金额！',
@@ -198,7 +219,6 @@ Page({
   },
 
   showPlugMsg:function(cdczno,sessionid){
-    console.log(cdczno);
     // 根据充电插座获取电站以及计费信息
     wx.request({
         url: app.httpUrl + '/ebike-charge/wxXcx/getCdzfDetail.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
@@ -263,14 +283,12 @@ Page({
 
   // 页面
   getPackage() {
-    console.log(this.data.stationinfo.id);
     wx.request({
       url: app.httpUrl + '/ebike-charge/cmpn/getCmpnListByStid.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
       data: {
         stid: this.data.stationinfo.id
       },
       success: (re) => {
-        console.log(re.data);
         var c = re.data.jcount;
         this.setData({
           showPackage: c > 0 ? true :false
@@ -517,5 +535,25 @@ Page({
     wx.navigateTo({
       url: '../user/cmpn/cmpnpackage/package?cmpn_id=' + cmpnid
     })
+  },
+
+  saveUserInfo(param){
+    wx.request({
+      url: app.httpUrl + '/ebike-charge/userInfo/saveUserInfoWechat.x', // 该url是自己的服务地址，实现的功能是服务端拿到authcode去开放平台进行token验证
+      data: param,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method:'POST',
+      success: (re) => {
+        app.globalData.userRegion = param.userRegion;
+        console.log(app.globalData.userRegion);
+      },
+      fail: () => {
+      },
+      complete:() =>{
+        
+      }
+  });
   }
 });

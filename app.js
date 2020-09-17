@@ -7,6 +7,7 @@ App({
   globalData: {
     hasLogin: false,
     userPhone:'',
+    userRegion:'',
     apiW:0,
     apiH:0,
     sessionid:null,
@@ -83,6 +84,7 @@ App({
                     that.globalData.expiredTime = +new Date();
                     that.globalData.hasLogin = true;
                     that.globalData.userPhone = xcxre.data.phone;
+                    that.globalData.userRegion = xcxre.data.region;
                     resolve(xcxre.data.sessionid);
                   }
                 })
